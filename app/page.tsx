@@ -12,6 +12,9 @@ export default function Home() {
   useGSAP(
     () => {
       const counter = { value: 0 };
+      gsap.set(textRef.current, {
+        opacity: 0,
+      });
       gsap
         .timeline()
         .to(boxRef.current, {
@@ -25,7 +28,10 @@ export default function Home() {
           height: "100vh",
           duration: 0.5,
         })
-
+        .to(textRef.current, {
+          opacity: 1,
+          duration: 0.5,
+        })
         .to(counter, {
           duration: 4,
 
