@@ -99,7 +99,6 @@ export default function Home() {
         ref={boxRef}
         className="relative rounded-3xl bg-white h-0 overflow-hidden"
       >
-        (
         <div
           ref={contentRef}
           className="w-full h-full flex justify-center items-center invisible "
@@ -112,7 +111,6 @@ export default function Home() {
         >
           {loadingNumber}
         </div>
-        )
       </div>
     </main>
   );
