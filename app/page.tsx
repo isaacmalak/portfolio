@@ -65,13 +65,13 @@ export default function Home() {
           .fromTo(
             contentRef.current,
             {
-              scale: 1.05,
+              scale: 1,
             },
             {
               scale: 0,
               x: "-100vw",
               y: "-100vh",
-              duration: 1,
+              duration: 2,
               ease: "power3.inOut",
             }
           );
