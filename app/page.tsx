@@ -53,12 +53,12 @@ export default function Home() {
           .fromTo(
             contentRef.current,
             {
-              opacity: 0,
+              autoAlpha: 0,
               scale: 0.9,
             },
 
             {
-              opacity: 1,
+              autoAlpha: 1,
               scale: 1,
             }
           )
@@ -102,7 +102,7 @@ export default function Home() {
         (
         <div
           ref={contentRef}
-          className="w-full h-full flex justify-center items-center "
+          className="w-full h-full flex justify-center items-center invisible "
         >
           <h1 className="text-4xl font-bold text-black ">Welcome</h1>
         </div>
