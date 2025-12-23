@@ -4,14 +4,14 @@ import gsap from "gsap";
 
 export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
   const boxRef = useRef(null);
+  const loadingNumberRef = useRef(null);
   const textRef = useRef(null);
-  const contentRef = useRef(null);
 
   const [loadingNumber, setLoadingNumber] = useState(0);
   useGSAP(
     () => {
       const counter = { value: 0 };
-      gsap.set(textRef.current, {
+      gsap.set(loadingNumberRef.current, {
         opacity: 0,
       });
       gsap
@@ -29,7 +29,7 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
           height: "100vh",
           duration: 0.5,
         })
-        .to(textRef.current, {
+        .to(loadingNumberRef.current, {
           opacity: 1,
           duration: 0.5,
         })
@@ -44,12 +44,12 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
           value: 100,
           onUpdate: () => setLoadingNumber(Math.round(counter.value)),
         })
-        .to(textRef.current, {
+        .to(loadingNumberRef.current, {
           opacity: 0,
           ease: "power3.out",
         })
         .fromTo(
-          contentRef.current,
+          textRef.current,
           {
             autoAlpha: 0,
             scale: 0.9,
@@ -61,7 +61,7 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
           }
         )
         .fromTo(
-          contentRef.current,
+          textRef.current,
           {
             scale: 1,
           },
@@ -83,13 +83,13 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
       className="relative rounded-3xl bg-white h-0 overflow-hidden"
     >
       <div
-        ref={contentRef}
+        ref={textRef}
         className="w-full h-full flex justify-center items-center invisible "
       >
         <h1 className="text-4xl font-bold text-black ">Welcome</h1>
       </div>
       <div
-        ref={textRef}
+        ref={loadingNumberRef}
         className="text-black left-0 bottom-0 absolute text-6xl font-bold flex justify-center items-center will-change-transform"
       >
         {loadingNumber}
