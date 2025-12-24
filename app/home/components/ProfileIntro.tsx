@@ -63,18 +63,16 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
         .fromTo(
           textRef.current,
           {
-            scale: 1,
+            opacity: 1,
           },
           {
-            scale: 0,
-            x: "-100vw",
-            y: "-100vh",
-            duration: 2,
+            opacity: 0,
+            duration: 1,
             ease: "power3.inOut",
           }
         );
     },
-  
+
     { scope: boxRef }
   );
   return (

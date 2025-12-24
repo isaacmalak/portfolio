@@ -8,7 +8,7 @@ export default function Home() {
   const [isIntroFinished, setInterFinished] = useState(false);
 
   return (
-    <main className="w-full h-screen flex flex-col justify-center items-center ">
+    <main className="w-screen h-screen flex flex-col justify-center items-center bg-black">
       {!isIntroFinished ? (
         <ProfileIntro
           onComplete={() => {
@@ -16,9 +16,8 @@ export default function Home() {
           }}
         />
       ) : (
-        <div className="bg-white w-full h-full">
+        
           <MainContent />
-        </div>
       )}
     </main>
   );
