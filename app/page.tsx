@@ -16,8 +16,7 @@ export default function Home() {
           }}
         />
       ) : (
-        
-          <MainContent />
+        <MainContent />
       )}
     </main>
   );
