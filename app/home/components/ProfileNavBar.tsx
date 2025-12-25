@@ -3,8 +3,7 @@ import Link from "next/link";
 
 export function ProfileNavBar() {
   return (
-    <nav className="flex flex-row w-full justify-between py-3 px-5 text-white bg-transparent backdrop-blur-sm items-center absolute z-10">
-      <div className="text-xl font-bold">Isaac</div>
+    <nav className="flex flex-row w-full justify-end py-3 px-5 text-white bg-transparent backdrop-blur-sm items-center absolute z-10">
       <div className="flex gap-5">
         <Link href={"https://www.linkedin.com/in/isaacmalak/"} target="_blank">
           <LucideLinkedin />

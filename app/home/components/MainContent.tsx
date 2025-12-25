@@ -5,13 +5,15 @@ import { ProfileNavBar } from "./ProfileNavBar";
 import Particles from "@/components/Particles";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { Fira_Code } from "next/font/google";
-import { Source_Code_Pro } from "next/font/google";
+import { Roboto_Mono, VT323 } from "next/font/google";
 import Image from "next/image";
-const sourceCodePro = Source_Code_Pro({
-  weight: "700",
+
+const roboto_mono = VT323({
   subsets: ["latin"],
+  display: "swap", // 'swap' ensures a fallback is used while loading
+  weight: "400",
 });
+
 export function MainContent() {
   const boxRef = useRef(null);
   const bgRef = useRef(null);
@@ -47,7 +49,7 @@ export function MainContent() {
           <section className="w-1/2 h-1/2   ">
             <h1 className="text-5xl font-extrabold text-white mb-6 drop-shadow-lg">
               <span
-                className={`font-extrabold tracking-widest ${sourceCodePro.className}`}
+                className={`text-6xl uppercase tracking-widest ${roboto_mono.className}`}
               >
                 Isaac Malak
               </span>
