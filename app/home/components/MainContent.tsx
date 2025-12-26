@@ -7,8 +7,6 @@ import { useGSAP } from "@gsap/react";
 import { Content, roboto_mono } from "./Content";
 import { ScrollTrigger } from "gsap/all";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function MainContent() {
   const mainContainerRef = useRef(null);
   const personalContentRef = useRef(null);
@@ -23,6 +21,7 @@ export function MainContent() {
             start: "top top",
             end: "bottom bottom",
             scrub: 1,
+            once: true,
             snap: {
               snapTo: 1, // 1 means it will snap to the end of the timeline (the second div) or the start (first div)
               duration: { min: 0.2, max: 0.8 }, // duration of the snap
