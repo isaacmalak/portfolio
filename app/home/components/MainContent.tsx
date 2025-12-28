@@ -5,59 +5,76 @@ import { ProfileNavBar } from "./ProfileNavBar";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { Content, roboto_mono } from "./Content";
-import { ScrollTrigger } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function MainContent() {
   const mainContainerRef = useRef(null);
-  const personalContentRef = useRef(null);
-  const bgRef = useRef(null);
-  const projectsRef = useRef(null);
+
+  // Refs for first section animations
+  const contentRef = useRef(null);
+  const personalInfoRef = useRef(null);
+
+  // Refs for second section animations
+  const projectsSectionRef = useRef(null);
+  const enoughTextRef = useRef(null);
   useGSAP(
     () => {
+      gsap.to(personalInfoRef.current, {
+        backgroundColor: "black",
+      });
+      gsap.fromTo(
+        contentRef.current,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 2,
+          ease: "power3.out",
+        }
+      );
       gsap
         .timeline({
           scrollTrigger: {
-            trigger: mainContainerRef.current,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1,
-            once: true,
-            snap: {
-              snapTo: 1, // 1 means it will snap to the end of the timeline (the second div) or the start (first div)
-              duration: { min: 0.2, max: 0.8 }, // duration of the snap
-              ease: "power1.inOut", // smoothness of the snap
-              delay: 0, // wait time before snapping
-            },
+            trigger: projectsSectionRef.current,
+            toggleActions: "play none none none",
+            start: "top center",
           },
         })
-        .to(bgRef.current, {
-          backgroundColor: "black",
-        })
         .fromTo(
-          personalContentRef.current,
+          enoughTextRef.current,
           {
+            y: -100,
             opacity: 0,
           },
           {
+            y: 0,
             opacity: 1,
-            duration: 2,
-            ease: "power3.out",
+            duration: 1,
           }
         );
     },
     { scope: mainContainerRef }
   );
   return (
-    <div ref={mainContainerRef} className="flex flex-col w-full min-h-screen">
-      <div ref={bgRef} className="bg-white min-h-screen flex flex-col">
+    <div ref={mainContainerRef} className="flex flex-col w-full min-h-screen ">
+      <div
+        ref={personalInfoRef}
+        className="bg-white min-h-screen flex flex-col"
+      >
         <ProfileNavBar />
-        <Content boxRef={personalContentRef} />
+        <Content boxRef={contentRef} />
       </div>
       <div
-        ref={projectsRef}
-        className="min-h-screen text-center flex justify-center items-center bg-gray-900"
+        ref={projectsSectionRef}
+        className="min-h-screen text-center flex justify-center items-center text-white bg-black "
       >
-        <p className={`text-6xl font-extrabold ${roboto_mono.className}`}>
+        <p
+          ref={enoughTextRef}
+          className={`text-6xl font-extrabold ${roboto_mono.className}`}
+        >
           Isn&apos;t this portfolio enough?
         </p>
       </div>
