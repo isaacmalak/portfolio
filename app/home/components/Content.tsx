@@ -12,13 +12,13 @@ export const roboto_mono = VT323({
 export function Content({ boxRef }: { boxRef: RefObject<null> }) {
   return (
     <div ref={boxRef} className="h-screen relative">
-      <Particles
+      {/* <Particles
         particleColors={undefined}
         className="absolute inset-0 pointer-events-none w-full max-w-full"
         particleBaseSize={100}
         particleCount={300}
-      />
-      <div className="flex flex-row items-center  h-full relative justify-center px-20 gap-30 mx-auto">
+      /> */}
+      <div className="flex flex-row items-center h-full relative justify-center px-20 gap-30 mx-auto">
         <section className="h-1/2 flex flex-col justify-center flex-1 w-1/2">
           <h1
             className={`text-6xl uppercase tracking-widest text-white ${roboto_mono.className}`}

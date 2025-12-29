@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { Content, roboto_mono } from "./Content";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Particles from "@/components/Particles";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,41 +36,42 @@ export function MainContent() {
           ease: "power3.out",
         }
       );
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: projectsSectionRef.current,
-            toggleActions: "play none none none",
-            start: "top center",
-          },
-        })
-        .fromTo(
+      ScrollTrigger.create({
+        trigger: projectsSectionRef.current,
+        start: "top 30%",
+        animation: gsap.fromTo(
           enoughTextRef.current,
           {
-            y: -100,
             opacity: 0,
           },
           {
-            y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 4.5,
+            ease: "power3.out",
           }
-        );
+        ),
+      });
     },
     { scope: mainContainerRef }
   );
   return (
-    <div ref={mainContainerRef} className="flex flex-col w-full min-h-screen ">
-      <div
-        ref={personalInfoRef}
-        className="bg-white min-h-screen flex flex-col"
-      >
+    <div
+      ref={mainContainerRef}
+      className="flex flex-col w-full min-h-screen h-full bg-gray-800/70"
+    >
+      <Particles
+        particleColors={undefined}
+        className="fixed inset-0 pointer-events-none w-full max-w-full z-50"
+        particleBaseSize={100}
+        particleCount={300}
+      />
+      <div ref={personalInfoRef} className="bg-white h-screen flex flex-col">
         <ProfileNavBar />
         <Content boxRef={contentRef} />
       </div>
       <div
         ref={projectsSectionRef}
-        className="min-h-screen text-center flex justify-center items-center text-white bg-black "
+        className="h-screen text-center flex justify-center items-center text-white relative z-0"
       >
         <p
           ref={enoughTextRef}
