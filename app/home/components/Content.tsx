@@ -9,7 +9,13 @@ export const roboto_mono = VT323({
   weight: "400",
 });
 
-export function Content({ boxRef }: { boxRef: RefObject<null> }) {
+export function Content({
+  boxRef,
+  coffeeRef,
+}: {
+  boxRef: RefObject<null>;
+  coffeeRef: RefObject<null>;
+}) {
   return (
     <div ref={boxRef} className="h-screen relative">
       {/* <Particles
@@ -18,20 +24,24 @@ export function Content({ boxRef }: { boxRef: RefObject<null> }) {
         particleBaseSize={100}
         particleCount={300}
       /> */}
-      <div className="flex flex-row items-center h-full relative justify-center px-20 gap-30 mx-auto">
+      <div className="flex flex-row items-center h-full relative justify-center px-40 gap-30 mx-auto">
         <section className="h-1/2 flex flex-col justify-center flex-1 w-1/2">
           <h1
             className={`text-6xl uppercase tracking-widest text-white ${roboto_mono.className}`}
           >
             Isaac Malak
           </h1>
-          <p className="text-xl text-white/80 font-mono animate-fade-in">
+          <p className="text-2xl text-white/80 font-mono animate-fade-in">
             <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-bold">
               Building apps, shipping code, and always learning.
             </span>
             <br />
-            <span className="text-white/70">
-              Focused on clean design, smooth user experiences and coffee.
+            <span className="text-white/70 text-2xl">
+              Focused on clean design, smooth user experiences and
+              <span ref={coffeeRef} className="italic ">
+                {" "}
+                coffee.
+              </span>
             </span>
             <br />
             <span className="italic text-cyan-200">
@@ -39,7 +49,7 @@ export function Content({ boxRef }: { boxRef: RefObject<null> }) {
             </span>
           </p>
         </section>
-        <section className="h-1/2 flex flex-col justify-center flex-1 w-1/2 items-center">
+        <section className="h-1/2 flex flex-col justify-center flex-1 w-1/2 items-end">
           <Image
             src="/images/profile3.png"
             alt=""

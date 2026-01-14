@@ -19,12 +19,6 @@ export default function Home() {
         />
       ) : (
         <>
-          <Particles
-            particleColors={undefined}
-            className="fixed inset-0 pointer-events-none w-full max-w-full "
-            particleBaseSize={100}
-            particleCount={300}
-          />
           <ReactLenis root>
             <MainContent />
           </ReactLenis>
