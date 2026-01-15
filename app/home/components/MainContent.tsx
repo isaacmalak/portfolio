@@ -8,58 +8,11 @@ import { Content, roboto_mono } from "./Content";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Particles from "@/components/Particles";
 import TextPlugin from "gsap/TextPlugin";
-import { Projects } from "./ProjectCard";
+import { Projects } from "./Projects";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { projects } from "@/constants/projects";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
-
-const projects = [
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Description for project three.",
-    link: "#",
-  },
-];
 
 export function MainContent() {
   const mainContainerRef = useRef(null);
@@ -167,7 +120,7 @@ export function MainContent() {
   return (
     <div
       ref={mainContainerRef}
-      className={`flex flex-col w-full min-h-screen bg-gray-800/70 ${roboto_mono.className}`}
+      className={`flex flex-col w-full min-h-screen bg-[#151515] ${roboto_mono.className}`}
       id="projects"
     >
       <ProfileNavBar />
@@ -189,7 +142,7 @@ export function MainContent() {
           </div>
           <div
             ref={projectsSectionRef}
-            className="h-screen text-center flex justify-center items-center text-white bg-rgba(31, 41, 55, 0.7) relative z-0"
+            className="h-screen text-center flex justify-center items-centerstext-white bg-rgba(31, 41, 55, 0.7) relative z-0"
           >
             <p ref={enoughTextRef} className={`text-6xl font-extrabold `}>
               Isn&apos;t this portfolio enough?
