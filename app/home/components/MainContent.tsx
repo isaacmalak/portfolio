@@ -8,7 +8,7 @@ import { Content, roboto_mono } from "./Content";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Particles from "@/components/Particles";
 import TextPlugin from "gsap/TextPlugin";
-import { Projects } from "./Projects";
+import { Projects } from "./project/Projects";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { projects } from "@/constants/projects";
 

@@ -3,8 +3,8 @@
 import { Project } from "@/constants/projects";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ProjectDetails } from "./project/ProjectDetails";
-import { ProjectsGrid } from "./project/ProjectsGrid";
+import { ProjectDetails } from "./ProjectDetails";
+import { ProjectsGrid } from "./ProjectsGrid";
 
 export function Projects({
   projects,
