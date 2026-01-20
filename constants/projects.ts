@@ -8,11 +8,11 @@ type RichText = {
 export type Project = {
   title: string;
   description: RichText[];
+  detailedDescription?: RichText[];
   link: string;
   images?: string[];
   titleOnHoverColor: string;
   titleColor: string; // On the Project Details
-  detailsDescription?: string;
 };
 const projectsPath = "/images/projects/";
 export const projects: Project[] = [
@@ -31,16 +31,22 @@ export const projects: Project[] = [
         text: ", enhancing sales tracking and internal progress.",
       },
     ],
+    detailedDescription: [
+      {
+        text: "Implemented features for real-time data visualization, employee management, and performance analytics.",
+        className: "block",
+      },
+      {
+        text: "Utilized modern web technologies to create an intuitive and responsive user interface.",
+        className: "font-bold",
+      },
+    ],
     link: "https://alpha.mymedahealth.com",
     images: [
       projectsPath + "meda/logo.png",
       projectsPath + "meda/login.jpeg",
-      projectsPath + "meda/dashboard.jpeg",
-      projectsPath + "meda/dashboard.jpeg",
-      projectsPath + "meda/dashboard.jpeg",
-      projectsPath + "meda/dashboard.jpeg",
-      projectsPath + "meda/dashboard.jpeg",
-      projectsPath + "meda/dashboard.jpeg",
+      projectsPath + "meda/profile.jpeg",
+      projectsPath + "meda/drawer.png",
       projectsPath + "meda/dashboard.jpeg",
     ],
     titleOnHoverColor: `group-hover:text-blue-600`,

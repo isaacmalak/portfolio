@@ -13,13 +13,22 @@ export function ProjectDetails({
         <h1 className={`${selectedProject.titleColor} text-6xl`}>
           {selectedProject.title}
         </h1>
-        <p className="text-3xl py-3 text-white">
+        <p className="text-2xl pt-3 text-white">
           {selectedProject.description.map((text, index) => (
             <span key={index} className={text.className?.toString()}>
               {text.text}
             </span>
           ))}
         </p>
+        {selectedProject.detailedDescription && (
+          <p className="text-2xl text-white">
+            {selectedProject.detailedDescription.map((text, index) => (
+              <span key={index} className={text.className?.toString()}>
+                {text.text}
+              </span>
+            ))}
+          </p>
+        )}
       </section>
       {/* Divider */}
       {/* <div className="w-0.5 bg-white/20 rounded-full my-20" /> */}
