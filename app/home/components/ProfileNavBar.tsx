@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function ProfileNavBar() {
   return (
-    <nav className="flex flex-row w-full justify-end py-3 px-5 text-white bg-transparent backdrop-blur-xs items-center z-100">
+    <nav className="flex flex-row w-full justify-end py-3 px-5 text-white bg-transparent backdrop-blur-xs items-center sticky z-100">
       <div className="flex gap-5">
         <Link href={"https://www.linkedin.com/in/isaacmalak/"} target="_blank">
           <LucideLinkedin />

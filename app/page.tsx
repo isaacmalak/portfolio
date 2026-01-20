@@ -4,7 +4,6 @@ import { useState } from "react";
 import { ProfileIntro } from "./home/components/ProfileIntro";
 import { MainContent } from "./home/components/MainContent";
 import ReactLenis from "lenis/react";
-import Particles from "@/components/Particles";
 
 export default function Home() {
   const [isIntroFinished, setInterFinished] = useState(false);
@@ -19,7 +18,7 @@ export default function Home() {
         />
       ) : (
         <>
-          <ReactLenis root>
+          <ReactLenis root >
             <MainContent />
           </ReactLenis>
         </>
