@@ -1,6 +1,4 @@
-import clsx, { ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-const styled = (classes: string) => <span className={classes} />;
+import { ClassValue } from "clsx";
 
 type RichText = {
   text: string;
