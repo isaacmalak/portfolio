@@ -142,7 +142,7 @@ export function MainContent() {
           </div>
           <div
             ref={projectsSectionRef}
-            className="h-screen text-center flex justify-center items-centerstext-white bg-rgba(31, 41, 55, 0.7) relative z-0"
+            className="h-screen text-center flex justify-center items-center text-white bg-rgba(31, 41, 55, 0.7) relative z-0"
           >
             <p ref={enoughTextRef} className={`text-6xl font-extrabold `}>
               Isn&apos;t this portfolio enough?
