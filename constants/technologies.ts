@@ -14,7 +14,7 @@ export const technologies = [
   },
   {
     name: "Supabase",
-    image: "/images/technologies/supabase.png",
+    image: "/images/technologies/supabase.svg",
   },
   {
     name: "Flutter",

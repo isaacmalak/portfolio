@@ -9,8 +9,8 @@ export type Project = {
   title: string;
   description: RichText[];
   detailedDescription?: RichText[];
-  link: string;
-  images?: string[];
+  link?: string;
+  images: string[];
   titleOnHoverColor: string;
   titleColor: string;
   techStackUsed: string[];
@@ -55,11 +55,11 @@ export const projects: Project[] = [
     techStackUsed: [
       "React",
       "TypeScript",
-      "NestJS",
-      "PostgreSQL",
+      "Next.js",
       "Supabase",
       "TanStack",
       "Cursor",
+      "Postgres",
     ],
   },
   {
@@ -77,7 +77,7 @@ export const projects: Project[] = [
       },
     ],
     link: "https://apps.apple.com/us/app/coulda-been-league-app/id6745900309",
-    images: [projectsPath + "cbl-logo.webp"],
+    images: [projectsPath + "cbl/logo.webp"],
     titleOnHoverColor: "group-hover:text-orange-400",
     titleColor: `text-orange-600`,
     techStackUsed: ["Flutter", "Dart", "Firebase"],
@@ -89,7 +89,6 @@ export const projects: Project[] = [
         text: "Developed a full-stack event booking application for Dev Events, allowing users to browse, register, and manage event attendance seamlessly.",
       },
     ],
-
     link: "https://devevents-iota.vercel.app/",
     images: [projectsPath + "dev-events-logo.png"],
     titleOnHoverColor: "group-hover:text-green-700",

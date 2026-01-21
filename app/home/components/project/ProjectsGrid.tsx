@@ -24,8 +24,11 @@ export function ProjectsGrid({
               {project.title}
             </h2>
             <div className="text-start">
-              {project.description.map((text) => (
-                <span className="text-start text-white inline text-2xl">
+              {project.description.map((text, index) => (
+                <span
+                  key={index}
+                  className="text-start text-white inline text-2xl"
+                >
                   {text.text}
                 </span>
               ))}

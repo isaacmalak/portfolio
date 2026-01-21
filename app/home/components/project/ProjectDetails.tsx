@@ -2,6 +2,7 @@ import { TechComponent } from "@/components/technologies/TechComponent";
 import { Project } from "@/constants/projects";
 import { technologies, Technology } from "@/constants/technologies";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ProjectDetails({
   selectedProject,
@@ -34,14 +35,34 @@ export function ProjectDetails({
             ))}
           </p>
         )}
-
         <p>
           <span className="text-white text-2xl">Tech Stack & Tools Used:</span>
           <br />
-          {techList.map((tech, index) => (
-            <TechComponent key={tech.name} tech={tech} />
-          ))}
+          <div className="flex gap-3">
+            {techList.map((tech, index) => (
+              <TechComponent key={tech.name} tech={tech} />
+            ))}
+          </div>
         </p>
+        {selectedProject.link && (
+          <>
+            <p className="text-2xl text-white ">Link:</p>
+            <Link
+              href={selectedProject.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center  bg-white/10 rounded-3xl px-6 py-3 relative "
+            >
+              <Image
+                src={selectedProject?.images[0]}
+                alt=""
+                width={100}
+                height={100}
+                className="w-auto h-20 contain-content"
+              />
+            </Link>
+          </>
+        )}
       </section>
       {/* Divider */}
       {/* <div className="w-0.5 bg-white/20 rounded-full my-20" /> */}
