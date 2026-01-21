@@ -51,7 +51,7 @@ export function ProjectDetails({
               href={selectedProject.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center  bg-white/10 rounded-3xl px-6 py-3 relative "
+              className="flex flex-col items-center justify-center bg-white/10 rounded-3xl px-6 py-3 relative "
             >
               <Image
                 src={selectedProject?.images[0]}
