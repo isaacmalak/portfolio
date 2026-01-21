@@ -1,4 +1,6 @@
+import { TechComponent } from "@/components/technologies/TechComponent";
 import { Project } from "@/constants/projects";
+import { technologies, Technology } from "@/constants/technologies";
 import Image from "next/image";
 
 export function ProjectDetails({
@@ -6,6 +8,9 @@ export function ProjectDetails({
 }: {
   selectedProject: Project;
 }) {
+  const techList = technologies.filter((tech) =>
+    selectedProject.techStackUsed?.includes(tech.name)
+  );
   return (
     <div className="w-full flex-row flex gap-2 max-h-[calc(100vh-10px)] overflow-y-scroll px-5 py-10 no-scrollbar">
       {/* Description section */}
@@ -29,6 +34,14 @@ export function ProjectDetails({
             ))}
           </p>
         )}
+
+        <p>
+          <span className="text-white text-2xl">Tech Stack & Tools Used:</span>
+          <br />
+          {techList.map((tech, index) => (
+            <TechComponent key={tech.name} tech={tech} />
+          ))}
+        </p>
       </section>
       {/* Divider */}
       {/* <div className="w-0.5 bg-white/20 rounded-full my-20" /> */}

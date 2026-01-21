@@ -12,7 +12,8 @@ export type Project = {
   link: string;
   images?: string[];
   titleOnHoverColor: string;
-  titleColor: string; // On the Project Details
+  titleColor: string;
+  techStackUsed: string[];
 };
 const projectsPath = "/images/projects/";
 export const projects: Project[] = [
@@ -51,6 +52,15 @@ export const projects: Project[] = [
     ],
     titleOnHoverColor: `group-hover:text-blue-600`,
     titleColor: `text-blue-600`,
+    techStackUsed: [
+      "React",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "Supabase",
+      "TanStack",
+      "Cursor",
+    ],
   },
   {
     title: "Coulda Been A League - Basketball Tournament App",
@@ -70,6 +80,7 @@ export const projects: Project[] = [
     images: [projectsPath + "cbl-logo.webp"],
     titleOnHoverColor: "group-hover:text-orange-400",
     titleColor: `text-orange-600`,
+    techStackUsed: ["Flutter", "Dart", "Firebase"],
   },
   {
     title: "Dev Event Website - Event Booking App",
@@ -83,6 +94,7 @@ export const projects: Project[] = [
     images: [projectsPath + "dev-events-logo.png"],
     titleOnHoverColor: "group-hover:text-green-700",
     titleColor: `text-green-700`,
+    techStackUsed: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
   },
   {
     title: "Figures E-commerce - Action Figures Store",
@@ -95,5 +107,6 @@ export const projects: Project[] = [
     images: [projectsPath + "figures-logo.png"],
     titleOnHoverColor: "group-hover:text-red-700",
     titleColor: "text-red-700",
+    techStackUsed: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
 ];
