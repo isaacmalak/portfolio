@@ -3,6 +3,7 @@ import { Project } from "@/constants/projects";
 import { technologies, Technology } from "@/constants/technologies";
 import Image from "next/image";
 import Link from "next/link";
+import { ProjectImage } from "./ProjectImage";
 
 export function ProjectDetails({
   selectedProject,
@@ -13,9 +14,9 @@ export function ProjectDetails({
     selectedProject.techStackUsed?.includes(tech.name)
   );
   return (
-    <div className="w-full flex-row flex gap-2 max-h-[calc(100vh-10px)] overflow-y-scroll px-5 py-10 no-scrollbar">
+    <div className="w-full flex-row flex gap-2 max-h-[calc(100vh-10px)] overflow-y-scroll px-5 py-10 no-scrollbar relative">
       {/* Description section */}
-      <section className="w-3/4 flex flex-col items-start justify-start gap-5 min-h-[calc(100vh-90px)] ">
+      <section className="w-3/4 flex flex-col items-start justify-start gap-5 min-h-[calc(100vh-90px)]">
         <h1 className={`${selectedProject.titleColor} text-6xl`}>
           {selectedProject.title}
         </h1>
@@ -35,11 +36,12 @@ export function ProjectDetails({
             ))}
           </p>
         )}
+        <div className="h-full" />
         <p>
           <span className="text-white text-2xl">Tech Stack & Tools Used:</span>
           <br />
           <div className="flex gap-3">
-            {techList.map((tech, index) => (
+            {techList.map((tech) => (
               <TechComponent key={tech.name} tech={tech} />
             ))}
           </div>
@@ -69,18 +71,11 @@ export function ProjectDetails({
       {/*  Images section */}
       <section className=" w-1/4 absolute right-0 top-0 h-full px-5">
         <div
-          className="flex flex-col gap-3 my-20 overflow-y-scroll no-scrollbar"
+          className="flex flex-col gap-3 my-20 overflow-y-scroll no-scrollbar absolute w-[120%] pointer-events-none right-0  items-end"
           style={{ maxHeight: "calc(100vh - 130px)" }}
         >
           {selectedProject.images?.slice(1).map((image, index) => (
-            <Image
-              key={index}
-              src={image}
-              alt=""
-              width={400}
-              height={300}
-              className="z-50 object-contain rounded-3xl border-0 p-3 border-transparent"
-            />
+            <ProjectImage key={index} image={image} />
           ))}
         </div>
       </section>
