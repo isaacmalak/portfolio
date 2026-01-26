@@ -71,7 +71,7 @@ export function ProjectDetails({
       {/*  Images section */}
       <section className=" w-1/4 absolute right-0 top-0 h-full px-5">
         <div
-          className="flex flex-col gap-3 my-20 overflow-y-scroll no-scrollbar absolute w-[120%] pointer-events-none right-0  items-end"
+          className="flex flex-col gap-3 my-20 overflow-y-scroll no-scrollbar absolute w-[120%]  right-0 items-end"
           style={{ maxHeight: "calc(100vh - 130px)" }}
         >
           {selectedProject.images?.slice(1).map((image, index) => (

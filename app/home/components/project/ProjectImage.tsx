@@ -14,7 +14,7 @@ export function ProjectImage({ image }: { image: string }) {
   }
   return (
     <>
-      <ImageDialogue ref={dialogRef} />
+      <ImageDialogue ref={dialogRef} image={image} />
       <button
         onClick={onClick}
         className="cursor-pointer hover:scale-110 duration-400 transition-transform hover:z-50 origin-right z-10 relative pointer-events-auto"
