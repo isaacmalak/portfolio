@@ -64,8 +64,6 @@ export function ProjectDetails({
             ))}
           </p>
         )}
-        {/* Spacer */}
-        <div className="h-full" />
         <div>
           <span className="text-white text-2xl">Tech Stack & Tools Used:</span>
           <br />
