@@ -14,24 +14,31 @@ export function ImageDialogue({
   const dialogRef = useRef<HTMLDialogElement>(null);
   useImperativeHandle(ref, () => dialogRef.current!);
 
+  const onOpen = () => {
+    gsap.fromTo(
+      dialogRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3 }
+    );
+  };
+  const onClose = () => {
+    gsap.to(dialogRef.current, { opacity: 0, duration: 0.8 });
+  };
+
   useEffect(() => {
     console.log("animating image dialogue");
-    const onOpen = () => {
-      gsap.fromTo(
-        dialogRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3 }
-      );
-    };
     const observer = new MutationObserver(() => {
       if (dialogRef.current?.open) {
         onOpen();
+      } else if (!dialogRef.current?.open) {
+        onClose();
       }
     });
     observer.observe(dialogRef.current!, {
       attributes: true,
       attributeFilter: ["open"],
     });
+
     return () => observer.disconnect();
   }, []);
 
@@ -42,7 +49,13 @@ export function ImageDialogue({
       onClick={(e) => {
         console.log("closing");
         if (e.target === e.currentTarget) {
-          (e.currentTarget as HTMLDialogElement).close();
+          gsap.to(dialogRef.current, {
+            opacity: 0,
+            duration: 0.3,
+            onComplete: () => {
+              dialogRef.current?.close();
+            },
+          });
         }
       }}
     >

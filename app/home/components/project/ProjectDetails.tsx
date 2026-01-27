@@ -16,7 +16,7 @@ export function ProjectDetails({
   return (
     <div className="w-full flex-row flex gap-2 max-h-screen relative px-5  overflow-y-scroll no-scrollbar ">
       {/* Description section */}
-      <section className="w-3/4 flex flex-col py-10 items-start justify-start overflow-y-auto no-scrollbar gap-5 min-h-[calc(100vh-90px)]">
+      <section className="w-3/4  flex flex-col py-10 items-start justify-start overflow-y-auto no-scrollbar gap-5 min-h-[calc(100vh-90px)]">
         <h1 className={`${selectedProject.titleColor} text-6xl`}>
           {selectedProject.title}
         </h1>
@@ -37,6 +37,8 @@ export function ProjectDetails({
         <p className="text-2xl pt-3 text-white">
           {selectedProject.description.map((text, index) => (
             <span key={index} className={text.className?.toString()}>
+              {text.text}
+              {text.text}
               {text.text}
             </span>
           ))}
@@ -93,12 +95,10 @@ export function ProjectDetails({
           </>
         )}
       </section>
-      {/* Divider */}
-      {/* <div className="w-0.5 bg-white/20 rounded-full my-20" /> */}
       {/*  Images section */}
-      <section className=" w-1/4 absolute right-0 py-10 h-full px-5 max-h-[calc(100vh-50px)] overflow-y-scroll no-scrollbar">
+      <section className=" w-1/4 absolute  right-0 py-10 h-full px-5 max-h-[calc(100vh-50px)] overflow-y-scroll no-scrollbar">
         <div className="sticky">
-          <div className="flex flex-col gap-3  absolute w-[120%] right-0 items-end">
+          <div className="flex flex-col gap-3 absolute right-0 items-end">
             {selectedProject.images?.slice(1).map((image, index) => (
               <ProjectImage key={index} image={image} />
             ))}
