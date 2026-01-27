@@ -9,13 +9,13 @@ export function ProjectsGrid({
   onSelect: ({ project }: { project: Project }) => void;
 }) {
   return (
-    <div className="justify-center items-center grid grid-cols-2 gap-3 px-10 relative">
+    <div className="justify-center items-center grid grid-cols-2 gap-3 px-10 py-20 relative">
       {projects.map((project, index) => (
         //Project Card
         <button
           onClick={() => onSelect({ project })}
           key={index}
-          className={`border-1 border-white/35 p-5 hover:bg-gray-500/20 cursor-pointer gap-2 items-center flex flex-row rounded-3xl w-full justify-between group`}
+          className={`border-1 border-white/35 p-5 hover:bg-gray-500/20 cursor-pointer gap-2 items-center h-70 flex flex-row rounded-3xl w-full justify-between group`}
         >
           <div className="flex flex-col">
             <h2

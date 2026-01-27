@@ -9,7 +9,7 @@ export default function Home() {
   const [isIntroFinished, setInterFinished] = useState(false);
 
   return (
-    <main className="max-w-screen min-h-screen flex flex-col justify-center items-center bg-black select-none">
+    <main className="max-w-screen min-h-[100dvh] flex flex-col justify-center items-center bg-black select-none">
       {!isIntroFinished ? (
         <ProfileIntro
           onComplete={() => {
@@ -18,7 +18,7 @@ export default function Home() {
         />
       ) : (
         <>
-          <ReactLenis root >
+          <ReactLenis root>
             <MainContent />
           </ReactLenis>
         </>
