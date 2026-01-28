@@ -89,6 +89,9 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
       <div
         ref={loadingNumberRef}
         className="text-black left-0 bottom-0 absolute text-6xl font-bold flex justify-center items-center will-change-transform"
+        style={{
+          paddingBottom: "env(safe-area-inset-bottom)",
+        }}
       >
         {loadingNumber}
       </div>
