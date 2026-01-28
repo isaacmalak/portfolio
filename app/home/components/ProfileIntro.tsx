@@ -1,6 +1,14 @@
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Orbitron } from "next/font/google";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-orbitron",
+  display: "swap",
+});
 
 export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
   const boxRef = useRef(null);
@@ -67,7 +75,7 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
           },
           {
             opacity: 0,
-            duration: 1,
+            duration: 1.5,
             ease: "power3.inOut",
           }
         );
@@ -78,17 +86,17 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
   return (
     <div
       ref={boxRef}
-      className="relative rounded-3xl bg-white h-0 overflow-hidden"
+      className={`relative rounded-3xl bg-white h-0 overflow-hidden ${orbitron.className}`}
     >
       <div
         ref={textRef}
         className="w-full h-full flex justify-center items-center invisible "
       >
-        <h1 className="text-4xl font-bold text-black ">Welcome</h1>
+        <h1 className="text-4xl font-bold text-black">Welcome</h1>
       </div>
       <div
         ref={loadingNumberRef}
-        className="text-black left-0 md:bottom-0 absolute bottom-1/12 text-6xl font-bold flex justify-center items-center will-change-transform "
+        className={`text-black left-0 md:bottom-0 absolute bottom-1/12 text-6xl font-bold flex justify-center items-center will-change-transform`}
       >
         {loadingNumber}
       </div>
