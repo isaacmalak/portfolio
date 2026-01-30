@@ -20,7 +20,7 @@ export function Content({
     <div ref={boxRef} className="relative h-screen w-full">
       <div className="flex h-full flex-col items-center justify-center text-center md:flex-row md:gap-10 md:px-10 md:pt-10 md:text-start">
         <section
-          className={`flex flex-col justify-center bg-red-500/0 py-10 md:h-1/2 md:w-full md:flex-1 md:justify-center md:pt-0 ${roboto_mono.className} px-2`}
+          className={`flex flex-col justify-center bg-red-500/0 py-10 md:h-1/2 md:w-full md:flex-1/2 md:justify-center md:pt-0 ${roboto_mono.className} px-2`}
         >
           <h1
             className={`text-2xl font-bold tracking-widest text-white uppercase md:text-6xl`}
