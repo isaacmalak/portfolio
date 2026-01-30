@@ -22,81 +22,92 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
       gsap.set(loadingNumberRef.current, {
         opacity: 0,
       });
-      gsap
-        .timeline({
-          onComplete: onComplete,
-        })
-        .to(boxRef.current, {
-          width: "15vw",
-          height: "15vw",
-          borderRadius: 0,
-          duration: 1,
-        })
-        .to(boxRef.current, {
-          width: "100vw",
-          height: "100vh",
-          duration: 0.5,
-        })
-        .to(loadingNumberRef.current, {
-          opacity: 1,
-          duration: 0.5,
-        })
-        .to(counter, {
-          duration: 4,
-          value: 99,
-          ease: "circ.out",
-          onUpdate: () => setLoadingNumber(Math.round(counter.value)),
-        })
-        .to(counter, {
-          duration: 1,
-          value: 100,
-          onUpdate: () => setLoadingNumber(Math.round(counter.value)),
-        })
-        .to(loadingNumberRef.current, {
-          opacity: 0,
-          ease: "power3.out",
-        })
-        .fromTo(
-          textRef.current,
-          {
-            autoAlpha: 0,
-            scale: 0.9,
-          },
 
-          {
-            autoAlpha: 1,
-            scale: 1,
-          }
-        )
-        .fromTo(
-          textRef.current,
-          {
-            opacity: 1,
-          },
-          {
-            opacity: 0,
-            duration: 1.5,
-            ease: "power3.inOut",
-          }
-        );
+      const matchMedia = gsap.matchMedia();
+      matchMedia.add(
+        {
+          desktop: "(min-width: 768px)",
+          mobile: "(max-width: 767px)",
+        },
+        (context) => {
+          const { desktop, mobile } = context.conditions!;
+          gsap
+            .timeline({
+              onComplete: onComplete,
+            })
+            .to(boxRef.current, {
+              width: desktop ? "30vh" : "15vh",
+              height: desktop ? "15vh" : "20vh",
+              borderRadius: 25,
+              duration: 1,
+            })
+            .to(boxRef.current, {
+              width: "100vw",
+              height: "100vh",
+              duration: 0.5,
+              borderRadius: 0,
+            })
+            .to(loadingNumberRef.current, {
+              opacity: 1,
+              duration: 0.5,
+            })
+            .to(counter, {
+              duration: 4,
+              value: 99,
+              ease: "circ.out",
+              onUpdate: () => setLoadingNumber(Math.round(counter.value)),
+            })
+            .to(counter, {
+              duration: 1,
+              value: 100,
+              onUpdate: () => setLoadingNumber(Math.round(counter.value)),
+            })
+            .to(loadingNumberRef.current, {
+              opacity: 0,
+              ease: "power3.out",
+            })
+            .fromTo(
+              textRef.current,
+              {
+                autoAlpha: 0,
+                scale: 0.9,
+              },
+              {
+                autoAlpha: 1,
+                scale: 1,
+              },
+            )
+            .fromTo(
+              textRef.current,
+              {
+                opacity: 1,
+              },
+              {
+                opacity: 0,
+                duration: 1.5,
+                ease: "power3.inOut",
+              },
+            );
+        },
+      );
     },
 
-    { scope: boxRef }
+    { scope: boxRef },
   );
   return (
     <div
       ref={boxRef}
-      className={`relative rounded-3xl bg-white h-0 overflow-hidden ${orbitron.className}`}
+      className={`relative h-0 overflow-hidden rounded-3xl bg-white ${orbitron.className}`}
     >
       <div
         ref={textRef}
-        className="w-full h-full flex justify-center items-center invisible "
+        className="invisible flex h-full w-full items-center justify-center"
       >
         <h1 className="text-4xl font-bold text-black">Welcome</h1>
       </div>
       <div
         ref={loadingNumberRef}
-        className={`text-black left-0 md:bottom-0 absolute bottom-1/12 text-6xl font-bold flex justify-center items-center will-change-transform`}
+        className={`absolute bottom-1/12 left-0 flex items-center justify-center text-6xl font-bold text-black will-change-transform md:bottom-0`}
       >
         {loadingNumber}
       </div>
