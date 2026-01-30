@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Orbitron } from "next/font/google";
 
-const orbitron = Orbitron({
+export const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-orbitron",

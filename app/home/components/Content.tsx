@@ -1,7 +1,7 @@
-import Particles from "@/components/Particles";
 import { RefObject } from "react";
 import { VT323 } from "next/font/google";
 import Image from "next/image";
+import { orbitron } from "./ProfileIntro";
 
 export const roboto_mono = VT323({
   subsets: ["latin"],
@@ -17,45 +17,45 @@ export function Content({
   coffeeRef: RefObject<null>;
 }) {
   return (
-    <div ref={boxRef} className="h-screen relative">
-      {/* <Particles
-        particleColors={undefined}
-        className="absolute inset-0 pointer-events-none w-full max-w-full"
-        particleBaseSize={100}
-        particleCount={300}
-      /> */}
-      <div className="flex flex-row items-center h-full relative justify-center px-40 gap-30 mx-auto">
-        <section className="h-1/2 flex flex-col justify-center flex-1 w-1/2">
+    <div ref={boxRef} className="relative h-screen w-full">
+      <div className="flex h-full flex-col items-center justify-center text-center md:flex-row md:gap-10 md:px-10 md:pt-10 md:text-start">
+        <section
+          className={`flex flex-col justify-center bg-red-500/0 py-10 md:h-1/2 md:w-full md:flex-1 md:justify-center md:pt-0 ${roboto_mono.className} px-2`}
+        >
           <h1
-            className={`text-6xl uppercase tracking-widest text-white ${roboto_mono.className}`}
+            className={`text-4xl font-bold tracking-widest text-white uppercase md:text-6xl`}
           >
             Isaac Malak
           </h1>
-          <p className="text-2xl text-white/80 font-mono animate-fade-in">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-bold">
+          <p className="font-mono text-white/80 md:text-2xl">
+            <span
+              className={`bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text font-bold text-transparent md:text-3xl ${orbitron.className}`}
+            >
               Building apps, shipping code, and always learning.
             </span>
             <br />
-            <span className="text-white/70 text-2xl">
+            <span
+              className={`tracking-wider text-white/70 md:text-2xl ${orbitron.className}`}
+            >
               Focused on clean design, smooth user experiences and
-              <span ref={coffeeRef} className="italic ">
+              <span ref={coffeeRef} className="italic">
                 {" "}
                 coffee.
               </span>
             </span>
             <br />
-            <span className="italic text-cyan-200">
+            <span className="text-xl font-bold text-cyan-200 italic md:text-2xl">
               Check out my projects below.
             </span>
           </p>
         </section>
-        <section className="h-1/2 flex flex-col justify-center flex-1 w-1/2 items-end">
+        <section className="flex w-full flex-col items-center justify-center bg-blue-700/0 md:h-1/2 md:flex-1 md:pt-0">
           <Image
             src="/images/profile3.png"
             alt=""
             width={400}
             height={400}
-            className="rounded-full h-auto select-none"
+            className="h-auto rounded-full select-none"
           />
         </section>
       </div>
