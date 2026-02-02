@@ -102,7 +102,7 @@ export const projects: Project[] = [
         text: "Built a demo e-commerce platform for Figures, specializing in action figures, with features for browsing products.",
       },
     ],
-    link: "https://devevents-iota.vercel.app/",
+    link: "https://ecommerce-demo-blue-mu.vercel.app/home",
     images: [projectsPath + "ecommerce/logo.png"],
     titleOnHoverColor: "group-hover:text-red-700",
     titleColor: "text-red-700",
