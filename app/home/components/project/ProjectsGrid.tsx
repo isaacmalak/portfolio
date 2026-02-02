@@ -1,5 +1,6 @@
 import { Project } from "@/constants/projects";
-import Image from "next/image";
+import { orbitron } from "../ProfileIntro";
+import { ProjectCardImage } from "./ProjectCardImage";
 
 export function ProjectsGrid({
   projects,
@@ -9,17 +10,17 @@ export function ProjectsGrid({
   onSelect: ({ project }: { project: Project }) => void;
 }) {
   return (
-    <div className="justify-center items-center grid grid-cols-2 gap-3 px-10 py-20 relative">
+    <div className="relative flex w-full flex-col items-center justify-center gap-3 px-10 py-20 md:grid md:h-full md:grid-cols-2">
       {projects.map((project, index) => (
         //Project Card
         <button
           onClick={() => onSelect({ project })}
           key={index}
-          className={`border-1 border-white/35 p-5 hover:bg-gray-500/20 cursor-pointer gap-2 items-center h-70 flex flex-row rounded-3xl w-full justify-between group`}
+          className={`group flex h-auto w-full cursor-pointer flex-col items-center justify-between gap-2 rounded-3xl border-1 border-white/35 p-5 font-extrabold tracking-widest hover:bg-gray-500/20 md:h-50 md:flex-row`}
         >
           <div className="flex flex-col">
             <h2
-              className={`text-4xl text-white font-bold text-start pb-5 ${project.titleOnHoverColor}`}
+              className={`${orbitron.className} pb-5 text-start text-sm text-white md:text-2xl ${project.titleOnHoverColor}`}
             >
               {project.title}
             </h2>
@@ -27,20 +28,14 @@ export function ProjectsGrid({
               {project.description.map((text, index) => (
                 <span
                   key={index}
-                  className="text-start text-white inline text-2xl"
+                  className={`inline overflow-hidden text-start text-xs text-white md:text-sm ${orbitron.className}`}
                 >
                   {text.text}
                 </span>
               ))}
             </div>
           </div>
-          <Image
-            src={project.images?.[0] || "/placeholder.png"}
-            alt=""
-            width={150}
-            height={75}
-            className="rounded-3xl border-0 h-40 p-3 border-transparent z-50 object-scale-down"
-          />
+          <ProjectCardImage imageSrc={project.images?.[0]} />
         </button>
       ))}
     </div>
