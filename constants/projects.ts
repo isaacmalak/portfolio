@@ -39,7 +39,6 @@ export const projects: Project[] = [
       },
       {
         text: "Utilized modern web technologies to create an intuitive and responsive user interface.",
-        className: "font-bold",
       },
     ],
     link: "https://alpha.mymedahealth.com",
