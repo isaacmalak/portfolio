@@ -17,14 +17,14 @@ export function ProjectImage({ image }: { image: string }) {
       <ImageDialogue ref={dialogRef} image={image} />
       <button
         onClick={onClick}
-        className="cursor-pointer hover:scale-110 duration-400 transition-transform hover:z-50 origin-right z-10 relative pointer-events-auto"
+        className="pointer-events-auto relative z-10 origin-right cursor-pointer transition-transform duration-400 hover:z-50 hover:scale-110"
       >
         <Image
           src={image}
           alt=""
           width={300}
           height={300}
-          className="z-50 object-scale-down rounded-3xl border-0 p-3"
+          className="z-50 rounded-3xl border-0 object-scale-down p-3"
         />
       </button>
     </>
