@@ -22,9 +22,10 @@ export function ProjectImage({ image }: { image: string }) {
         <Image
           src={image}
           alt=""
+          priority
           width={300}
           height={300}
-          className="z-50 rounded-3xl border-0 object-scale-down p-3"
+          className="z-50 rounded-xl border-0 object-scale-down md:rounded-2xl"
         />
       </button>
     </>

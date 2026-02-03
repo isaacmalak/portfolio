@@ -88,7 +88,7 @@ export function ProjectDetails({
             )}
           </section>
           {/*  Images section */}
-          <section className="no-scrollbar absolute right-0 h-full max-h-[calc(100vh-50px)] w-1/4 overflow-y-scroll px-5 py-10">
+          <section className="no-scrollbar absolute right-0 h-full max-h-[calc(100vh-50px)] w-1/4 overflow-y-scroll px-5 py-15">
             <div className="sticky">
               <div className="absolute right-0 flex flex-col items-end gap-3">
                 {selectedProject.images?.slice(1).map((image, index) => (

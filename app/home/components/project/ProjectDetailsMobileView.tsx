@@ -13,7 +13,7 @@ export function ProjectDetailsMobileView({
   techList: Technology[];
 }) {
   return (
-    <div className="px-5 py-10">
+    <div className="px-5 py-15">
       {/* Title */}
       <h1 className={`${project.titleColor} text-bold mb-5 text-xl`}>
         {project.title}
@@ -47,18 +47,27 @@ export function ProjectDetailsMobileView({
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-10 w-30 items-center justify-center rounded-xl bg-white/10 px-4 py-3"
+            className="flex h-15 w-40 items-center justify-center rounded-xl bg-white/10 px-4 py-3"
           >
             <Image
               src={project?.images[0]}
               alt=""
-              width={100}
+              width={120}
               height={100}
               className="contain-content"
             />
           </Link>
         </>
       )}
+      <div className="no-scrollbar mt-8 flex gap-3 overflow-x-auto">
+        {project.images
+          .map((image, index) => (
+            <div className="w-5/6 shrink-0">
+              <ProjectImage image={image} key={index} />
+            </div>
+          ))
+          .slice(1)}
+      </div>
     </div>
   );
 }
