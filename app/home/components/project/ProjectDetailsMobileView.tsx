@@ -15,7 +15,7 @@ export function ProjectDetailsMobileView({
   return (
     <div className="px-5 py-10">
       {/* Title */}
-      <h1 className={`${project.titleColor} mb-5 text-xl font-extrabold`}>
+      <h1 className={`${project.titleColor} text-bold mb-5 text-xl`}>
         {project.title}
       </h1>
 
@@ -24,7 +24,7 @@ export function ProjectDetailsMobileView({
         {project.detailedDescription?.map((paragraph, index) => (
           <span
             key={index}
-            className={`${paragraph.className} mb-3 text-white`}
+            className={`${paragraph.className} tet-xl mb-3 text-white`}
           >
             {paragraph.text}
           </span>

@@ -3,12 +3,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Orbitron } from "next/font/google";
 
-export const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-orbitron",
-  display: "swap",
-});
+// export const orbitron = Orbitron({
+//   subsets: ["latin"],
+//   weight: ["400", "700"],
+//   variable: "--font-orbitron",
+//   display: "swap",
+// });
 
 export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
   const boxRef = useRef(null);
@@ -97,7 +97,7 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
   return (
     <div
       ref={boxRef}
-      className={`relative h-0 overflow-hidden rounded-3xl bg-white ${orbitron.className}`}
+      className={`relative h-0 overflow-hidden rounded-3xl bg-white`}
     >
       <div
         ref={textRef}

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ProjectImage } from "./ProjectImage";
 import { useEffect, useState } from "react";
 import { ProjectDetailsMobileView } from "./ProjectDetailsMobileView";
-import { orbitron } from "../ProfileIntro";
+import { roboto_mono } from "../Content";
 
 export function ProjectDetails({
   selectedProject,
@@ -16,7 +16,7 @@ export function ProjectDetails({
   const [media, setMatchMedia] = useState<"desktop" | "mobile">();
 
   useEffect(() => {
-    const matchList = window.matchMedia("(min-width: 768px)");
+    const matchList = window.matchMedia("(max-width: 768px)");
 
     const handleChange = (e: MediaQueryListEvent) => {
       setMatchMedia(e.matches ? "mobile" : "desktop");
@@ -32,44 +32,14 @@ export function ProjectDetails({
     selectedProject.techStackUsed?.includes(tech.name),
   );
   return (
-    <div className={`${orbitron.className} tracking-wider`}>
-      {media === "mobile" ? (
+    <div className={`tracking-wider md:tracking-tight`}>
+      {media === "desktop" ? (
         <div className="no-scrollbar relative flex max-h-screen w-full flex-row gap-2 overflow-y-scroll px-5">
           {/* Description section */}
-          <section className="no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto py-10">
-            <h1 className={`${selectedProject.titleColor} text-6xl`}>
+          <section className="no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto py-12">
+            <h1 className={`${selectedProject.titleColor} text-5xl`}>
               {selectedProject.title}
             </h1>
-            <p className="pt-3 text-2xl text-white">
-              {selectedProject.description.map((text, index) => (
-                <span key={index} className={text.className?.toString()}>
-                  {text.text}
-                </span>
-              ))}
-            </p>
-            <p className="pt-3 text-2xl text-white">
-              {selectedProject.description.map((text, index) => (
-                <span key={index} className={text.className?.toString()}>
-                  {text.text}
-                </span>
-              ))}
-            </p>
-            <p className="pt-3 text-2xl text-white">
-              {selectedProject.description.map((text, index) => (
-                <span key={index} className={text.className?.toString()}>
-                  {text.text}
-                  {text.text}
-                  {text.text}
-                </span>
-              ))}
-            </p>
-            <p className="pt-3 text-2xl text-white">
-              {selectedProject.description.map((text, index) => (
-                <span key={index} className={text.className?.toString()}>
-                  {text.text}
-                </span>
-              ))}
-            </p>
             <p className="pt-3 text-2xl text-white">
               {selectedProject.description.map((text, index) => (
                 <span key={index} className={text.className?.toString()}>
@@ -87,11 +57,11 @@ export function ProjectDetails({
               </p>
             )}
             <div>
-              <span className="text-2xl text-white">
+              <span className="text-2xl font-extrabold text-white">
                 Tech Stack & Tools Used:
               </span>
               <br />
-              <div className="flex">
+              <div className="flex-wrap">
                 {techList.map((tech) => (
                   <TechComponent key={tech.name} tech={tech} />
                 ))}
@@ -99,7 +69,7 @@ export function ProjectDetails({
             </div>
             {selectedProject.link && (
               <>
-                <p className="text-2xl text-white">Link:</p>
+                <p className="text-2xl font-extrabold text-white">Link:</p>
                 <Link
                   href={selectedProject.link}
                   target="_blank"

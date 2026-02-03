@@ -1,5 +1,4 @@
 import { Project } from "@/constants/projects";
-import { orbitron } from "../ProfileIntro";
 import { ProjectCardImage } from "./ProjectCardImage";
 
 export function ProjectsGrid({
@@ -20,7 +19,7 @@ export function ProjectsGrid({
         >
           <div className="flex flex-col">
             <h2
-              className={`${orbitron.className} pb-5 text-start text-sm text-white md:text-2xl ${project.titleOnHoverColor}`}
+              className={`pb-5 text-start text-sm text-white md:text-2xl ${project.titleOnHoverColor}`}
             >
               {project.title}
             </h2>
@@ -28,7 +27,7 @@ export function ProjectsGrid({
               {project.description.map((text, index) => (
                 <span
                   key={index}
-                  className={`inline overflow-hidden text-start text-xs text-white md:text-sm ${orbitron.className}`}
+                  className={`inline overflow-hidden text-start text-xs text-white md:text-sm`}
                 >
                   {text.text}
                 </span>

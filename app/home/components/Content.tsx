@@ -1,9 +1,8 @@
 import { RefObject } from "react";
-import { VT323 } from "next/font/google";
+import { Martian_Mono, VT323 } from "next/font/google";
 import Image from "next/image";
-import { orbitron } from "./ProfileIntro";
 
-export const roboto_mono = VT323({
+export const roboto_mono = Martian_Mono({
   subsets: ["latin"],
   display: "swap", // 'swap' ensures a fallback is used while loading
   weight: "400",
@@ -29,13 +28,13 @@ export function Content({
           </h1>
           <p className="font-mono text-white/80">
             <span
-              className={`bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-xs font-bold text-transparent md:text-3xl ${orbitron.className}`}
+              className={`bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-xs font-bold text-transparent md:text-3xl `}
             >
               Building apps, shipping code, and always learning.
             </span>
             <br />
             <span
-              className={`text-xs tracking-wider text-white/70 md:text-2xl ${orbitron.className}`}
+              className={`text-xs tracking-wider text-white/70 md:text-2xl `}
             >
               Focused on clean design, smooth user experiences and
               <span ref={coffeeRef} className="italic">
