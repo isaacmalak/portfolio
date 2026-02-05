@@ -49,15 +49,15 @@ export function MainContent() {
         opacity: 1,
       });
 
-      gsap.timeline().fromTo(
-        contentRef.current,
+      gsap.fromTo(
+        mainContainerRef.current,
         {
           opacity: 0,
         },
         {
           opacity: 1,
-          duration: 2,
-          ease: "power3.out",
+          duration: 1,
+          ease: "power3.in",
         },
       );
 
@@ -75,6 +75,7 @@ export function MainContent() {
               opacity: 1,
               duration: 1.5,
               ease: "power3.out",
+              delay: 0.6,
             },
           )
           .to(enoughTextRef.current, {
