@@ -1,6 +1,6 @@
 import { TechComponent } from "@/components/technologies/TechComponent";
 import { Project } from "@/constants/projects";
-import { technologies, Technology } from "@/constants/technologies";
+import { Technology } from "@/constants/technologies";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectImage } from "./ProjectImage";
@@ -62,8 +62,8 @@ export function ProjectDetailsMobileView({
       <div className="no-scrollbar mt-8 flex gap-3 overflow-x-auto">
         {project.images
           .map((image, index) => (
-            <div className="w-5/6 shrink-0">
-              <ProjectImage image={image} key={index} />
+            <div key={index} className="w-5/6 shrink-0">
+              <ProjectImage image={image} />
             </div>
           ))
           .slice(1)}

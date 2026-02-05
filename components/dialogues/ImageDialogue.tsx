@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 import Image from "next/image";
-import { Ref, useEffect, useImperativeHandle, useRef } from "react";
+import { Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
 
 export function ImageDialogue({
   ref,
@@ -14,24 +14,22 @@ export function ImageDialogue({
   const dialogRef = useRef<HTMLDialogElement>(null);
   useImperativeHandle(ref, () => dialogRef.current!);
 
+  const [closing, setClosing] = useState<boolean>();
+
   const onOpen = () => {
     gsap.fromTo(
       dialogRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 0.3 }
+      { opacity: 1, duration: 0.3 },
     );
-  };
-  const onClose = () => {
-    gsap.to(dialogRef.current, { opacity: 0, duration: 0.8 });
   };
 
   useEffect(() => {
     console.log("animating image dialogue");
     const observer = new MutationObserver(() => {
+      if (closing) return;
       if (dialogRef.current?.open) {
         onOpen();
-      } else if (!dialogRef.current?.open) {
-        onClose();
       }
     });
     observer.observe(dialogRef.current!, {
@@ -45,14 +43,14 @@ export function ImageDialogue({
   return (
     <dialog
       ref={dialogRef}
-      className="backdrop:bg-black/40 m-auto border-0 bg-transparent"
+      className="m-auto border-0 bg-transparent backdrop:bg-black/40"
       onClick={(e) => {
-        console.log("closing");
         if (e.target === e.currentTarget) {
           gsap.to(dialogRef.current, {
             opacity: 0,
             duration: 0.3,
             onComplete: () => {
+              setClosing(true);
               dialogRef.current?.close();
             },
           });
