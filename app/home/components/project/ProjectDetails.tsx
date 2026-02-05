@@ -37,10 +37,10 @@ export function ProjectDetails({
         <div className="no-scrollbar relative flex max-h-screen w-full flex-row gap-2 overflow-y-scroll px-5">
           {/* Description section */}
           <section className="no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto py-12">
-            <h1 className={`${selectedProject.titleColor} text-5xl`}>
+            <h1 className={`${selectedProject.titleColor} text-4xl`}>
               {selectedProject.title}
             </h1>
-            <p className="pt-3 text-2xl text-white">
+            <p className="pt-3 text-xl text-white">
               {selectedProject.description.map((text, index) => (
                 <span key={index} className={text.className?.toString()}>
                   {text.text}
@@ -48,7 +48,7 @@ export function ProjectDetails({
               ))}
             </p>
             {selectedProject.detailedDescription && (
-              <p className="text-2xl text-white">
+              <p className="text-xl text-white">
                 {selectedProject.detailedDescription.map((text, index) => (
                   <span key={index} className={text.className?.toString()}>
                     {text.text}
@@ -57,7 +57,7 @@ export function ProjectDetails({
               </p>
             )}
             <div>
-              <span className="text-2xl font-extrabold text-white">
+              <span className="text-xl font-extrabold text-white">
                 Tech Stack & Tools Used:
               </span>
               <br />
@@ -69,7 +69,7 @@ export function ProjectDetails({
             </div>
             {selectedProject.link && (
               <>
-                <p className="text-2xl font-extrabold text-white">Link:</p>
+                <p className="text-xl font-extrabold text-white">Link:</p>
                 <Link
                   href={selectedProject.link}
                   target="_blank"
@@ -81,7 +81,7 @@ export function ProjectDetails({
                     alt=""
                     width={100}
                     height={100}
-                    className="h-20 w-auto contain-content"
+                    className="h-16 w-auto contain-content"
                   />
                 </Link>
               </>
