@@ -63,7 +63,7 @@ export function MainContent() {
 
       ScrollTrigger.create({
         trigger: projectsSectionRef.current,
-        start: "top 30%",
+        start: "top 20%",
         animation: gsap
           .timeline({ onComplete: () => setProjectsVisibility(true) })
           .fromTo(
