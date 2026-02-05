@@ -64,7 +64,7 @@ export function ImageDialogue({
           height={1080}
           alt=""
           quality={100}
-          className="max-h-[90vh] max-w-[90vw] rounded-3xl"
+          className="rounded-xl md:max-h-[90vh] md:max-w-[90vw] md:rounded-3xl"
         />
       </div>
     </dialog>

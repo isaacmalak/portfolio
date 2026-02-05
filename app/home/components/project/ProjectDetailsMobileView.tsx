@@ -34,7 +34,7 @@ export function ProjectDetailsMobileView({
       <div>
         <span className="font-bold text-white">Tech Stack & Tools Used:</span>
         <br />
-        <div className="mb-3 flex-wrap gap-3">
+        <div className="mb-3 flex flex-wrap gap-3">
           {techList.map((tech) => (
             <TechComponent key={tech.name} tech={tech} />
           ))}

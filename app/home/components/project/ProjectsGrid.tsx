@@ -19,7 +19,7 @@ export function ProjectsGrid({
         >
           <div className="flex flex-col">
             <h2
-              className={`pb-5 text-start text-sm text-white md:text-2xl ${project.titleOnHoverColor}`}
+              className={`md:text-sx pb-5 text-start text-white lg:text-xl ${project.titleOnHoverColor}`}
             >
               {project.title}
             </h2>
@@ -27,7 +27,7 @@ export function ProjectsGrid({
               {project.description.map((text, index) => (
                 <span
                   key={index}
-                  className={`inline overflow-hidden text-start text-xs text-white md:text-sm`}
+                  className={`inline overflow-hidden text-start text-xs text-white md:text-xs lg:text-sm`}
                 >
                   {text.text}
                 </span>
