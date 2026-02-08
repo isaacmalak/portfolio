@@ -20,24 +20,32 @@ export function ImageDialogue({
     gsap.fromTo(
       dialogRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 0.3 },
+      { opacity: 1, duration: 0.5 },
     );
+    document.body.style.overflow = "hidden";
   };
 
   useEffect(() => {
     console.log("animating image dialogue");
+
     const observer = new MutationObserver(() => {
       if (closing) return;
       if (dialogRef.current?.open) {
         onOpen();
       }
     });
+
     observer.observe(dialogRef.current!, {
       attributes: true,
       attributeFilter: ["open"],
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+
+      // This is a safe guard in case of the overflow isn't set properly
+      document.body.style.overflow = "";
+    };
   }, []);
 
   return (
@@ -51,22 +59,21 @@ export function ImageDialogue({
             duration: 0.3,
             onComplete: () => {
               setClosing(true);
+              document.body.style.overflow = "";
               dialogRef.current?.close();
             },
           });
         }
       }}
     >
-      <div>
-        <Image
-          src={image}
-          width={1920}
-          height={1080}
-          alt=""
-          quality={100}
-          className="rounded-xl md:max-h-[90vh] md:max-w-[90vw] md:rounded-3xl"
-        />
-      </div>
+      <Image
+        src={image}
+        width={1920}
+        height={1080}
+        alt=""
+        quality={100}
+        className="relative overflow-hidden rounded-xl md:max-h-[90vh] md:max-w-[90vw] md:rounded-3xl"
+      />
     </dialog>
   );
 }
