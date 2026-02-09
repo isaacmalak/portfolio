@@ -5,6 +5,10 @@ import gsap from "gsap";
 import Image from "next/image";
 import { Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
 
+type offset = {
+  x: number;
+  y: number;
+};
 export function ImageDialogue({
   ref,
   image,
@@ -13,13 +17,24 @@ export function ImageDialogue({
   image: string;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const imageRef = useRef(null);
+  const [scale, setScale] = useState(1);
+
   useImperativeHandle(ref, () => dialogRef.current!);
 
   const [closing, setClosing] = useState<boolean>();
 
-  useGesture({
-    onWheelCapture: (state) => {},
-  });
+  useGesture(
+    {
+      onWheel: ({ delta }) => {
+        setScale((prev) => {
+          const newScale = prev - delta[1] * 0.0009;
+          return Math.min(Math.max(newScale, 0.95), 2); // Limit scale between 0.5 and 3
+        });
+      },
+    },
+    { target: imageRef },
+  );
 
   const onOpen = () => {
     gsap.fromTo(
@@ -71,14 +86,22 @@ export function ImageDialogue({
         }
       }}
     >
-      <Image
-        src={image}
-        width={1920}
-        height={1080}
-        alt=""
-        quality={100}
-        className="relative overflow-hidden rounded-xl md:max-h-[90vh] md:max-w-[90vw] md:rounded-3xl"
-      />
+      <div
+        className="relative overflow-hidden rounded-xl bg-gray-900/30 transition-transform md:h-[90vh] md:w-[90vw] md:rounded-3xl"
+        ref={imageRef}
+      >
+        <Image
+          src={image}
+          style={{
+            transform: `scale(${scale})`,
+          }}
+          width={1920}
+          height={1080}
+          alt=""
+          quality={100}
+          className="rounded-xl duration-600 md:rounded-3xl"
+        />
+      </div>
     </dialog>
   );
 }
