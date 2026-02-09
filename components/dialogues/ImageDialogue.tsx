@@ -1,5 +1,6 @@
 "use client";
 
+import { useGesture } from "@use-gesture/react";
 import gsap from "gsap";
 import Image from "next/image";
 import { Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
@@ -15,6 +16,10 @@ export function ImageDialogue({
   useImperativeHandle(ref, () => dialogRef.current!);
 
   const [closing, setClosing] = useState<boolean>();
+
+  useGesture({
+    onWheelCapture: (state) => {},
+  });
 
   const onOpen = () => {
     gsap.fromTo(

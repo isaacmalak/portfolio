@@ -17,7 +17,7 @@ export function Content({
 }) {
   return (
     <div ref={boxRef} className="relative h-screen w-full">
-      <div className="flex h-full flex-col items-center pb-20 px-2 justify-center text-center md:flex-row md:gap-6 md:px-10 md:pt-10 md:text-start">
+      <div className="flex h-full flex-col items-center justify-center px-2 text-center md:flex-row md:gap-6 md:px-10 md:pt-10 md:text-start">
         <section
           className={`flex flex-col justify-center py-10 md:h-1/2 md:w-full md:flex-1/2 md:justify-center md:pt-0 ${roboto_mono.className} px-2`}
         >
