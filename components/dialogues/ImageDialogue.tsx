@@ -29,7 +29,9 @@ export function ImageDialogue({
       onWheel: ({ delta }) => {
         setScale((prev) => {
           const newScale = prev - delta[1] * 0.0009;
-          return Math.min(Math.max(newScale, 0.95), 2); // Limit scale between 0.5 and 3
+
+          // Puts the limit of the scale between 0.95 and 2, this is to prevent the image from being too small or too big
+          return Math.min(Math.max(newScale, 0.95), 2);
         });
       },
     },
