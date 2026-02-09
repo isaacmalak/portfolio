@@ -34,7 +34,7 @@ export function ProjectDetails({
   return media === "desktop" ? (
     <div className="no-scrollbar relative flex max-h-screen w-full flex-row gap-2 overflow-y-scroll px-2">
       {/* Description section */}
-      <section className="no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto py-12">
+      <section className="no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto px-2 py-12">
         <h1 className={`${selectedProject.titleColor} text-3xl`}>
           {selectedProject.title}
         </h1>
