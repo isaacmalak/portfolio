@@ -21,13 +21,26 @@ export function ImageDialogue({
 
   const [closing, setClosing] = useState<boolean>();
 
+  // Prevent Safari/Webkit proprietary gesture events from interfering with onPinch.
+  // React doesn't support GestureEvents, so without this, the browser intercepts
+  // pinch gestures before @use-gesture can process them.
+  useEffect(() => {
+    const preventGesture = (e: Event) => e.preventDefault();
+    document.addEventListener("gesturestart", preventGesture);
+    document.addEventListener("gesturechange", preventGesture);
+    return () => {
+      document.removeEventListener("gesturestart", preventGesture);
+      document.removeEventListener("gesturechange", preventGesture);
+    };
+  }, []);
+
   useGesture(
     {
       onWheel: ({ delta }) => {
         setScale((prev) => {
           const newScale = prev - delta[1] * 0.0009;
 
-          // Puts the limit of the scale between 1 and 2, this is to prevent the image from being too small or too big
+          // Puts the limit of the scale between 1 and 3
           const scale = Math.min(Math.max(newScale, 1), 3);
 
           if (prev > 1 && scale == 1) {
@@ -39,14 +52,23 @@ export function ImageDialogue({
           return scale;
         });
       },
-      onPinch: ({ offset, event }) => {
-        event.preventDefault();
+      onPinch: ({ offset: [d], event }) => {
+        event?.preventDefault();
 
-        const newScale = offset[0] / 100;
-        const limitedScale = Math.min(Math.max(newScale, 1), 2);
+        // offset[0] from onPinch IS the scale factor directly (starts at 1),
+        // no need to divide by 100
+        const limitedScale = Math.min(Math.max(d, 1), 3);
+
+        if (scale > 1 && limitedScale === 1) {
+          setOffset({ x: 0, y: 0 });
+        }
+
         setScale(limitedScale);
       },
-      onDrag: ({ offset, event }) => {
+      onDrag: ({ offset, event, pinching, cancel }) => {
+        // Cancel the drag gesture entirely while a pinch is active —
+        // two-finger pinch also moves the center point, which fires drag events
+        if (pinching) return cancel();
         event.preventDefault();
         setOffset({ x: offset[0], y: offset[1] });
       },
