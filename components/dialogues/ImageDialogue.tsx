@@ -5,10 +5,6 @@ import gsap from "gsap";
 import Image from "next/image";
 import { Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
 
-type offset = {
-  x: number;
-  y: number;
-};
 export function ImageDialogue({
   ref,
   image,
@@ -17,7 +13,7 @@ export function ImageDialogue({
   image: string;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const imageRef = useRef(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
@@ -32,23 +28,35 @@ export function ImageDialogue({
           const newScale = prev - delta[1] * 0.0009;
 
           // Puts the limit of the scale between 1 and 2, this is to prevent the image from being too small or too big
-          const scale = Math.min(Math.max(newScale, 1), 2);
-          if (scale == 1) {
+          const scale = Math.min(Math.max(newScale, 1), 3);
+
+          if (prev > 1 && scale == 1) {
             setOffset({ x: 0, y: 0 });
           }
 
+          setScale(scale);
+
           return scale;
         });
+      },
+      onPinch: ({ offset, event }) => {
+        event.preventDefault();
+
+        const newScale = offset[0] / 100;
+        const limitedScale = Math.min(Math.max(newScale, 1), 2);
+        setScale(limitedScale);
       },
       onDrag: ({ offset, event }) => {
         event.preventDefault();
         setOffset({ x: offset[0], y: offset[1] });
       },
     },
+
     {
       target: imageRef,
       eventOptions: { passive: false },
       drag: {
+        // filterTaps: true,
         from: () => (scale === 1 ? [0, 0] : [offset.x, offset.y]),
       },
     },
@@ -89,7 +97,7 @@ export function ImageDialogue({
   return (
     <dialog
       ref={dialogRef}
-      className="m-auto border-0 bg-transparent backdrop:bg-black/40"
+      className="no-scrollbar m-auto touch-none border-0 bg-transparent backdrop:bg-black/40"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           gsap.to(dialogRef.current, {
@@ -121,7 +129,7 @@ export function ImageDialogue({
           height={1080}
           alt=""
           quality={100}
-          className="relative rounded-xl duration-400 md:rounded-3xl"
+          className="relative rounded-xl duration-200 hover:cursor-grab md:rounded-3xl"
         />
       </div>
     </dialog>
