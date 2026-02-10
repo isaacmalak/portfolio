@@ -75,7 +75,7 @@ export function ImageDialogue({
     },
 
     {
-      target: imageRef,
+      target: dialogRef,
       eventOptions: { passive: false },
       drag: {
         // filterTaps: true,
@@ -119,7 +119,7 @@ export function ImageDialogue({
   return (
     <dialog
       ref={dialogRef}
-      className="no-scrollbar m-auto touch-none border-0 bg-transparent backdrop:bg-black/40"
+      className="no-scrollbar m-auto overflow-visible touch-none border-0 bg-transparent md:overflow-auto backdrop:bg-black/40"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           gsap.to(dialogRef.current, {
@@ -137,7 +137,7 @@ export function ImageDialogue({
       }}
     >
       <div
-        className="relative touch-none overflow-hidden rounded-xl transition-transform md:h-[90vh] md:w-[90vw] md:rounded-3xl"
+        className="relative touch-none rounded-xl md:overflow-hidden md:transition-transform md:h-[90vh] md:w-[90vw] md:rounded-3xl"
         ref={imageRef}
       >
         <Image
@@ -151,7 +151,7 @@ export function ImageDialogue({
           height={1080}
           alt=""
           quality={100}
-          className="relative rounded-xl duration-200 hover:cursor-grab md:rounded-3xl"
+          className="relative rounded-xl md:duration-200 hover:cursor-grab md:rounded-3xl"
         />
       </div>
     </dialog>
