@@ -3,7 +3,14 @@
 import { useGesture } from "@use-gesture/react";
 import gsap from "gsap";
 import Image from "next/image";
-import { Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
+import {
+  ReactEventHandler,
+  Ref,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 
 export function ImageDialogue({
   ref,
@@ -16,6 +23,9 @@ export function ImageDialogue({
   const imageRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isTap, setIsTap] = useState(false);
+  const [aspectRatio, setAspectRatio] = useState<number>();
+  const [display, setDisplay] = useState<"mobile" | "desktop">();
 
   useImperativeHandle(ref, () => dialogRef.current!);
 
@@ -34,6 +44,29 @@ export function ImageDialogue({
     };
   }, []);
 
+  const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+
+    const { naturalWidth, naturalHeight } = img;
+
+    console.log(
+      "Image loaded with dimensions:",
+      naturalWidth,
+      "x",
+      naturalHeight,
+      "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    );
+
+    const aspectRatio = naturalWidth / naturalHeight;
+
+    setAspectRatio(aspectRatio);
+    console.log(
+      "Aspect ratio set to:",
+      aspectRatio,
+      "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    );
+  };
+
   useGesture(
     {
       onWheel: ({ delta }) => {
@@ -45,6 +78,7 @@ export function ImageDialogue({
 
           if (prev > 1 && scale == 1) {
             setOffset({ x: 0, y: 0 });
+            setIsTap(true);
           }
 
           setScale(scale);
@@ -69,6 +103,7 @@ export function ImageDialogue({
         // Cancel the drag gesture entirely while a pinch is active —
         // two-finger pinch also moves the center point, which fires drag events
         if (pinching) return cancel();
+        setIsTap(false);
         event.preventDefault();
         setOffset({ x: offset[0], y: offset[1] });
       },
@@ -79,7 +114,7 @@ export function ImageDialogue({
       eventOptions: { passive: false },
       drag: {
         // filterTaps: true,
-        from: () => (scale === 1 ? [0, 0] : [offset.x, offset.y]),
+        from: () => (scale === 1 && isTap ? [0, 0] : [offset.x, offset.y]),
       },
     },
   );
@@ -117,43 +152,55 @@ export function ImageDialogue({
   }, []);
 
   return (
-    <dialog
-      ref={dialogRef}
-      className="no-scrollbar m-auto overflow-visible touch-none border-0 bg-transparent md:overflow-auto backdrop:bg-black/40"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) {
-          gsap.to(dialogRef.current, {
-            opacity: 0,
-            duration: 0.3,
-            onComplete: () => {
-              setScale(1);
-              setOffset({ x: 0, y: 0 });
-              setClosing(true);
-              document.body.style.overflow = "";
-              dialogRef.current?.close();
-            },
-          });
-        }
-      }}
-    >
-      <div
-        className="relative touch-none rounded-xl md:overflow-hidden md:transition-transform md:h-[90vh] md:w-[90vw] md:rounded-3xl"
-        ref={imageRef}
+    <>
+      <img src={image} style={{ display: "none" }} onLoad={handleLoad} />
+
+      <dialog
+        ref={dialogRef}
+        className={`no-scrollbar m-auto max-w-none touch-none overflow-visible border-0 bg-transparent backdrop:bg-black/40 `}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            gsap.to(dialogRef.current, {
+              opacity: 0,
+              duration: 0.3,
+              onComplete: () => {
+                setScale(1);
+                setOffset({ x: 0, y: 0 });
+                setClosing(true);
+                document.body.style.overflow = "";
+                dialogRef.current?.close();
+              },
+            });
+          }
+        }}
       >
-        <Image
-          src={image}
-          style={{
-            transform: `scale(${scale})`,
-            left: offset.x,
-            top: offset.y,
-          }}
-          width={1920}
-          height={1080}
-          alt=""
-          quality={100}
-          className="relative rounded-xl md:duration-200 hover:cursor-grab md:rounded-3xl"
-        />
-      </div>
-    </dialog>
+        <div
+          className={`relative touch-none overflow-visible rounded-xl md:rounded-3xl md:transition-transform ${
+            aspectRatio && aspectRatio < 1
+              ? "h-[80vh] w-auto md:h-[90vh]"
+              : "h-[80vh] w-[90vw] md:h-[90vh] md:w-[90vw]"
+          }`}
+          style={{ aspectRatio: aspectRatio }}
+          ref={imageRef}
+        >
+          {
+            <Image
+              src={image}
+              style={{
+                transform: `scale(${scale})`,
+                left: offset.x,
+                top: offset.y,
+                // aspectRatio: aspectRatio ? aspectRatio : undefined,
+              }}
+              fill
+              alt=""
+              quality={100}
+              priority
+              className="rounded-xl object-contain hover:cursor-grab md:rounded-3xl md:duration-200"
+            />
+          }
+        </div>
+      </dialog>
+    </>
   );
 }
