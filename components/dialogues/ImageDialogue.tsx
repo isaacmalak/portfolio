@@ -4,7 +4,6 @@ import { useGesture } from "@use-gesture/react";
 import gsap from "gsap";
 import Image from "next/image";
 import {
-  ReactEventHandler,
   Ref,
   useEffect,
   useImperativeHandle,
@@ -25,7 +24,6 @@ export function ImageDialogue({
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isTap, setIsTap] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number>();
-  const [display, setDisplay] = useState<"mobile" | "desktop">();
 
   useImperativeHandle(ref, () => dialogRef.current!);
 
