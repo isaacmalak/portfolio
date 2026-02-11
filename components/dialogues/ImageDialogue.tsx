@@ -46,25 +46,10 @@ export function ImageDialogue({
 
   const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.currentTarget;
-
     const { naturalWidth, naturalHeight } = img;
-
-    console.log(
-      "Image loaded with dimensions:",
-      naturalWidth,
-      "x",
-      naturalHeight,
-      "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
-    );
-
     const aspectRatio = naturalWidth / naturalHeight;
 
     setAspectRatio(aspectRatio);
-    console.log(
-      "Aspect ratio set to:",
-      aspectRatio,
-      "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
-    );
   };
 
   useGesture(
@@ -157,7 +142,7 @@ export function ImageDialogue({
 
       <dialog
         ref={dialogRef}
-        className={`no-scrollbar m-auto max-w-none touch-none overflow-visible border-0 bg-transparent backdrop:bg-black/40 `}
+        className={`no-scrollbar m-auto max-w-none touch-none overflow-visible border-0 bg-transparent backdrop:bg-black/40`}
         onClick={(e) => {
           if (e.target === e.currentTarget) {
             gsap.to(dialogRef.current, {
