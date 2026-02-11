@@ -3,13 +3,7 @@
 import { useGesture } from "@use-gesture/react";
 import gsap from "gsap";
 import Image from "next/image";
-import {
-  Ref,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+import { Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
 
 export function ImageDialogue({
   ref,
@@ -140,7 +134,7 @@ export function ImageDialogue({
 
       <dialog
         ref={dialogRef}
-        className={`no-scrollbar m-auto max-w-none touch-none overflow-visible border-0 bg-transparent backdrop:bg-black/40`}
+        className={`no-scrollbar m-auto max-w-none touch-none overflow-visible rounded-2xl border-0 bg-transparent backdrop:bg-black/40`}
         onClick={(e) => {
           if (e.target === e.currentTarget) {
             gsap.to(dialogRef.current, {
@@ -161,7 +155,7 @@ export function ImageDialogue({
           className={`relative touch-none overflow-visible rounded-xl md:rounded-3xl md:transition-transform ${
             aspectRatio && aspectRatio < 1
               ? "h-[80vh] w-auto md:h-[90vh]"
-              : "h-[80vh] w-[90vw] md:h-[90vh] md:w-[90vw]"
+              : "h-fit w-[90vw] md:h-[90vh] md:w-[90vw]"
           }`}
           style={{ aspectRatio: aspectRatio }}
           ref={imageRef}
