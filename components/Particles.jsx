@@ -125,7 +125,7 @@ const Particles = ({
       renderer.setSize(width, height);
       camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
     };
-    window.addEventListener('resize', resize, false);
+    // window.addEventListener('resize', resize, false);
     resize();
 
     const handleMouseMove = e => {

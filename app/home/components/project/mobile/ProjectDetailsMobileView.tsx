@@ -4,6 +4,7 @@ import { Technology } from "@/constants/technologies";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectImageMobileView } from "./ProjectImageMobileView";
+import { useEffect } from "react";
 
 export function ProjectDetailsMobileView({
   project,
@@ -12,6 +13,10 @@ export function ProjectDetailsMobileView({
   project: Project;
   techList: Technology[];
 }) {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="max-w-screen px-5 py-15">
       {/* Title */}
