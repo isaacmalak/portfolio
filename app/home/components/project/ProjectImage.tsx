@@ -21,6 +21,7 @@ export function ProjectImage({ image }: { image: string }) {
 
     setAspectRatio(aspectRatio);
   };
+  const isLoaded = aspectRatio !== undefined && aspectRatio !== null;
   return (
     <>
       <img src={image} style={{ display: "none" }} onLoad={handleLoad} />
@@ -30,8 +31,12 @@ export function ProjectImage({ image }: { image: string }) {
       <button
         onClick={onClick}
         className={`pointer-events-auto relative z-10 origin-right cursor-pointer overflow-hidden rounded-xl transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${
-          aspectRatio && aspectRatio < 1 ? "w-40 -left-20 absolute" : "w-70"
-        }`}
+          !isLoaded
+            ? "opacity-0"
+            : aspectRatio && aspectRatio < 1
+              ? "absolute -left-20 w-40"
+              : "w-70"
+        } `}
       >
         <Image
           src={image}
@@ -39,11 +44,7 @@ export function ProjectImage({ image }: { image: string }) {
           priority
           width={500}
           height={500}
-          style={
-            {
-              // aspectRatio: aspectRatio,
-            }
-          }
+          onLoad={handleLoad}
           className="relative z-50 rounded-2xl border-0 object-scale-down"
         />
       </button>

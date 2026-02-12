@@ -2,7 +2,7 @@ import { ImageDialogue } from "@/components/dialogues/ImageDialogue";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
-export function ProjectImage({ image }: { image: string }) {
+export function ProjectImageMobileView({ image }: { image: string }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   function onClick() {
     if (!dialogRef.current) return;
@@ -12,6 +12,7 @@ export function ProjectImage({ image }: { image: string }) {
       alert("The <dialog> API is not supported by this browser");
     }
   }
+
   const [aspectRatio, setAspectRatio] = useState<number>();
 
   const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -21,6 +22,9 @@ export function ProjectImage({ image }: { image: string }) {
 
     setAspectRatio(aspectRatio);
   };
+
+  const isLoaded = aspectRatio !== undefined && aspectRatio !== null;
+
   return (
     <>
       <img src={image} style={{ display: "none" }} onLoad={handleLoad} />
@@ -29,8 +33,12 @@ export function ProjectImage({ image }: { image: string }) {
 
       <button
         onClick={onClick}
-        className={`pointer-events-auto relative z-10 origin-right cursor-pointer overflow-hidden rounded-xl transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${
-          aspectRatio && aspectRatio < 1 ? "absolute -left-20 w-40" : "w-70"
+        className={`pointer-events-auto relative z-10 max-h-45 shrink-0 origin-right cursor-pointer overflow-hidden transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${
+          !isLoaded
+            ? "h-0 opacity-0"
+            : aspectRatio && aspectRatio < 1
+              ? "h-45 w-20"
+              : "w-70"
         }`}
       >
         <Image
@@ -39,12 +47,8 @@ export function ProjectImage({ image }: { image: string }) {
           priority
           width={500}
           height={500}
-          style={
-            {
-              // aspectRatio: aspectRatio,
-            }
-          }
-          className="relative z-50 rounded-2xl border-0 object-scale-down"
+          onLoad={handleLoad}
+          className="relative z-50 rounded-xl border-0 object-scale-down"
         />
       </button>
     </>

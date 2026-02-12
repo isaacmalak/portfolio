@@ -72,12 +72,13 @@ export function ProjectDetails({
               href={selectedProject.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center rounded-3xl bg-white/10 px-6 py-3"
+              className="flex flex-col items-center justify-center rounded-3xl bg-white p-3"
             >
               <Image
                 src={selectedProject?.images[0]}
                 alt=""
                 width={100}
+                priority
                 height={100}
                 className="h-16 w-auto contain-content"
               />
