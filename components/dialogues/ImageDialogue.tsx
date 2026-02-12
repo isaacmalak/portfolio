@@ -8,16 +8,17 @@ import { Ref, useEffect, useImperativeHandle, useRef, useState } from "react";
 export function ImageDialogue({
   ref,
   image,
+  aspectRatio,
 }: {
   ref: Ref<HTMLDialogElement>;
   image: string;
+  aspectRatio?: number;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isTap, setIsTap] = useState(false);
-  const [aspectRatio, setAspectRatio] = useState<number>();
 
   useImperativeHandle(ref, () => dialogRef.current!);
 
@@ -35,14 +36,6 @@ export function ImageDialogue({
       document.removeEventListener("gesturechange", preventGesture);
     };
   }, []);
-
-  const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = e.currentTarget;
-    const { naturalWidth, naturalHeight } = img;
-    const aspectRatio = naturalWidth / naturalHeight;
-
-    setAspectRatio(aspectRatio);
-  };
 
   useGesture(
     {
@@ -130,8 +123,6 @@ export function ImageDialogue({
 
   return (
     <>
-      <img src={image} style={{ display: "none" }} onLoad={handleLoad} />
-
       <dialog
         ref={dialogRef}
         className={`no-scrollbar m-auto max-w-none touch-none overflow-visible rounded-2xl border-0 bg-transparent backdrop:bg-black/40`}

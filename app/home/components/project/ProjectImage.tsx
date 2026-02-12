@@ -1,6 +1,6 @@
 import { ImageDialogue } from "@/components/dialogues/ImageDialogue";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export function ProjectImage({ image }: { image: string }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -12,20 +12,39 @@ export function ProjectImage({ image }: { image: string }) {
       alert("The <dialog> API is not supported by this browser");
     }
   }
+  const [aspectRatio, setAspectRatio] = useState<number>();
+
+  const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    const { naturalWidth, naturalHeight } = img;
+    const aspectRatio = naturalWidth / naturalHeight;
+
+    setAspectRatio(aspectRatio);
+  };
   return (
     <>
-      <ImageDialogue ref={dialogRef} image={image} />
+      <img src={image} style={{ display: "none" }} onLoad={handleLoad} />
+
+      <ImageDialogue ref={dialogRef} image={image} aspectRatio={aspectRatio} />
+
       <button
         onClick={onClick}
-        className="pointer-events-auto relative z-10 origin-right cursor-pointer transition-transform duration-400 hover:z-50 hover:scale-110"
+        className={`pointer-events-auto relative z-10 origin-right cursor-pointer overflow-hidden rounded-xl transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${
+          aspectRatio && aspectRatio < 1 ? "w-40 -left-20 absolute" : "w-70"
+        }`}
       >
         <Image
           src={image}
           alt=""
           priority
-          width={300}
-          height={300}
-          className="z-50 rounded-xl border-0 object-scale-down md:rounded-2xl"
+          width={500}
+          height={500}
+          style={
+            {
+              // aspectRatio: aspectRatio,
+            }
+          }
+          className="relative z-50 rounded-2xl border-0 object-scale-down"
         />
       </button>
     </>
