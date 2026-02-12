@@ -3,7 +3,7 @@ import { Project } from "@/constants/projects";
 import { Technology } from "@/constants/technologies";
 import Image from "next/image";
 import Link from "next/link";
-import { ProjectImage } from "./ProjectImage";
+import { ProjectImage } from "../ProjectImage";
 
 export function ProjectDetailsMobileView({
   project,

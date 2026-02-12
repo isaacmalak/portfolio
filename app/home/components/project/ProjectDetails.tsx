@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProjectImage } from "./ProjectImage";
 import { useEffect, useState } from "react";
-import { ProjectDetailsMobileView } from "./ProjectDetailsMobileView";
+import { ProjectDetailsMobileView } from "./mobile/ProjectDetailsMobileView";
 import { roboto_mono } from "../Content";
 
 export function ProjectDetails({
