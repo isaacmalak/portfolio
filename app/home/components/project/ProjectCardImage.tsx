@@ -5,18 +5,19 @@ import Image from "next/image";
 export function ProjectCardImage({ imageSrc }: { imageSrc?: string }) {
   const [hasError, setHasError] = useState(false);
 
-  if (!imageSrc || hasError) return null; // hide completely
+  if (!imageSrc) return null;
 
   return (
     <Image
       src={imageSrc}
-      alt=""
+      alt="Project Logo"
       width={150}
       height={75}
-      onError={() => {
+      onError={(e) => {
+        console.error("Error loading image:", imageSrc, e);
         setHasError(true);
       }}
-      priority
+      unoptimized
       className="z-50 h-40 rounded-3xl border-0 border-transparent object-scale-down p-3"
     />
   );
