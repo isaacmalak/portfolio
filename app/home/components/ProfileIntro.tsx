@@ -62,32 +62,22 @@ export function ProfileIntro({ onComplete }: { onComplete: () => void }) {
               value: 100,
               onUpdate: () => setLoadingNumber(Math.round(counter.value)),
             })
-            .to(loadingNumberRef.current, {
-              opacity: 0,
-              ease: "power3.out",
-            })
+            .to(loadingNumberRef.current, { opacity: 0, ease: "power3.out" })
             .fromTo(
               textRef.current,
-              {
-                autoAlpha: 0,
-                scale: 0.9,
-              },
-              {
-                autoAlpha: 1,
-                scale: 1,
-              },
+              { autoAlpha: 0, scale: 0.9 },
+              { autoAlpha: 1, scale: 1 },
             )
             .fromTo(
               textRef.current,
-              {
-                opacity: 1,
-              },
-              {
-                opacity: 0,
-                duration: 1.5,
-                ease: "power3.inOut",
-              },
-            );
+              { opacity: 1 },
+              { opacity: 0, duration: 1.5, ease: "power3.inOut" },
+            )
+            .to(boxRef.current, {
+              backgroundColor: "#000000",
+              duration: 0.7,
+              ease: "power3.out",
+            });
         },
       );
     },
