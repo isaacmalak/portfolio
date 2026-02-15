@@ -243,7 +243,7 @@ export const projects: Project[] = [
         text: " was chose to be our framework as it provides scalable and modular architecture helps when onboarding new devs on this kind of solutions, along with strong TypeScript support.",
       },
     ],
-    images: [projectsPath + "technologies/nestjs.png"],
+    images: ["/images/technologies/nestjs.png"],
     techStackUsed: ["NestJS", "TypeScript", "Vapi"],
     titleColor: "text-green-700",
     titleOnHoverColor: "group-hover:text-green-700",

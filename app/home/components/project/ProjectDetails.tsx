@@ -78,7 +78,7 @@ export function ProjectDetails({
               href={selectedProject.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center rounded-3xl p-3"
+              className="flex flex-col items-center justify-center rounded-3xl bg-white p-3"
             >
               <Image
                 src={selectedProject?.images[0]}
