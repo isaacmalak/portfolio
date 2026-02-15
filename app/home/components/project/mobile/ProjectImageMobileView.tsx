@@ -44,7 +44,6 @@ export function ProjectImageMobileView({ image }: { image: string }) {
         <Image
           src={image}
           alt=""
-          priority
           width={500}
           height={500}
           onLoad={handleLoad}

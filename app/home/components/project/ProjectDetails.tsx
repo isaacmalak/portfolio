@@ -84,7 +84,6 @@ export function ProjectDetails({
                 src={selectedProject?.images[0]}
                 alt=""
                 width={100}
-                priority
                 height={100}
                 className="h-16 w-auto contain-content"
               />

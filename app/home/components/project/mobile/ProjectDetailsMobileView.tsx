@@ -13,7 +13,6 @@ export function ProjectDetailsMobileView({
   project: Project;
   techList: Technology[];
 }) {
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -58,7 +57,6 @@ export function ProjectDetailsMobileView({
               src={project?.images[0]}
               alt=""
               width={120}
-              priority
               height={100}
               className="object-scale-down"
             />
