@@ -36,9 +36,7 @@ export function ProjectDetails({
     <div className="no-scrollbar relative flex max-h-screen w-full flex-row gap-2 overflow-y-scroll px-2">
       {/* Description section */}
       <section
-        className={`no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto px-2 py-12 ${
-          noImages && "w-full"
-        }`}
+        className={`no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto px-2 py-12 ${noImages && "w-full"}`}
       >
         <h1 className={`${selectedProject.titleColor} text-3xl`}>
           {selectedProject.title}
@@ -67,7 +65,7 @@ export function ProjectDetails({
             Tech Stack & Tools Used:
           </span>
           <br />
-          <div className="flex-row bg-white">
+          <div className="flex flex-row flex-wrap items-center">
             {techList.map((tech) => (
               <TechComponent key={tech.name} tech={tech} />
             ))}
@@ -80,7 +78,7 @@ export function ProjectDetails({
               href={selectedProject.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center rounded-3xl bg-white p-3"
+              className="flex flex-col items-center justify-center rounded-3xl p-3"
             >
               <Image
                 src={selectedProject?.images[0]}
