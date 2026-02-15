@@ -67,7 +67,7 @@ export function ProjectDetails({
             Tech Stack & Tools Used:
           </span>
           <br />
-          <div className="flex-wrap">
+          <div className="flex-row bg-white">
             {techList.map((tech) => (
               <TechComponent key={tech.name} tech={tech} />
             ))}
