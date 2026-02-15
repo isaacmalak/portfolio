@@ -80,7 +80,7 @@ export const projects: Project[] = [
       },
       {
         text: "basketball",
-        className: "text-orange-700",
+        className: "text-orange-500",
       },
       {
         text: " tournament application, enabling users to manage teams, schedules, and real-time scores for their matches.",
@@ -114,9 +114,50 @@ export const projects: Project[] = [
       projectsPath + "cbl/team.png",
       projectsPath + "cbl/chat.png",
     ],
-    titleOnHoverColor: "group-hover:text-orange-400",
-    titleColor: `text-orange-600`,
+    titleOnHoverColor: "group-hover:text-orange-500",
+    titleColor: `text-orange-500`,
     techStackUsed: ["Flutter", "Dart", "Firebase"],
+  },
+  {
+    title: "AI Middleware - Empowering AI Integrations",
+    description: [
+      {
+        text: "Middleware where AI agents can be useful without hallucinating or having to worry about rate limits.",
+      },
+    ],
+    detailedDescription: [
+      {
+        text: "Who never wanted to use AI agents but was worried about hallucinations or rate limits?",
+        className: "block",
+      },
+      {
+        text: "Objective was integrating an AI voice agent to an open API from a CRM, sounds easy right?",
+        className: "block",
+      },
+      {
+        text: "Well, I had the most common problems when dealing with AI agents which are: redundant tokens and hallucinations, enormous data comes with the already configured tools for the AI agent.",
+        className: "block",
+      },
+      {
+        text: "The solution was building a middleware that passes the needed data only with filtering and refining.",
+        className: "block",
+      },
+      {
+        text: "AI agents showed excellent responses with the minimum tokens to consume, and reducing the prompt for parsing and refining responses.",
+        className: "block",
+      },
+      {
+        text: "NestJs",
+        className: "text-red-700",
+      },
+      {
+        text: " was chose to be our framework as it provides scalable and modular architecture helps when onboarding new devs on this kind of solutions, along with strong TypeScript support.",
+      },
+    ],
+    images: ["/images/technologies/nestjs.png"],
+    techStackUsed: ["NestJS", "TypeScript", "Vapi"],
+    titleColor: "text-amber-700",
+    titleOnHoverColor: "group-hover:text-amber-400",
   },
   {
     title: "Dev Event Website - Event Booking App",
@@ -156,8 +197,8 @@ export const projects: Project[] = [
       projectsPath + "event/event.jpeg",
       projectsPath + "event/event2.jpeg",
     ],
-    titleOnHoverColor: "group-hover:text-green-700",
-    titleColor: `text-green-700`,
+    titleOnHoverColor: "group-hover:text-green-500",
+    titleColor: `text-green-500`,
     techStackUsed: [
       "Next.js",
       "TypeScript",
@@ -203,49 +244,8 @@ export const projects: Project[] = [
       projectsPath + "ecommerce/home.jpeg",
       projectsPath + "ecommerce/product.jpeg",
     ],
-    titleOnHoverColor: "group-hover:text-red-700",
-    titleColor: "text-red-700",
+    titleOnHoverColor: "group-hover:text-red-500",
+    titleColor: "text-red-500",
     techStackUsed: ["Next.js", "TypeScript", "Tailwind CSS", "Gsap", "Vapi"],
-  },
-  {
-    title: "AI Middleware - Empowering AI Integrations",
-    description: [
-      {
-        text: "Middleware where AI agents can be useful without hallucinating or having to worry about rate limits.",
-      },
-    ],
-    detailedDescription: [
-      {
-        text: "Who never wanted to use AI agents but was worried about hallucinations or rate limits?",
-        className: "block",
-      },
-      {
-        text: "Objective was integrating an AI voice agent to an open API from a CRM, sounds easy right?",
-        className: "block",
-      },
-      {
-        text: "Well, I had the most common problems when dealing with AI agents which are: redundant tokens and hallucinations, enormous data comes with the already configured tools for the AI agent.",
-        className: "block",
-      },
-      {
-        text: "The solution was building a middleware that passes the needed data only with filtering and refining.",
-        className: "block",
-      },
-      {
-        text: "AI agents showed excellent responses with the minimum tokens to consume, and reducing the prompt for parsing and refining responses.",
-        className: "block",
-      },
-      {
-        text: "NestJs",
-        className: "text-red-700",
-      },
-      {
-        text: " was chose to be our framework as it provides scalable and modular architecture helps when onboarding new devs on this kind of solutions, along with strong TypeScript support.",
-      },
-    ],
-    images: ["/images/technologies/nestjs.png"],
-    techStackUsed: ["NestJS", "TypeScript", "Vapi"],
-    titleColor: "text-green-700",
-    titleOnHoverColor: "group-hover:text-green-700",
   },
 ];
