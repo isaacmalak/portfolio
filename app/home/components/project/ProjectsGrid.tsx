@@ -15,7 +15,7 @@ export function ProjectsGrid({
         <button
           onClick={() => onSelect({ project })}
           key={index}
-          className={`group flex h-auto w-full cursor-pointer flex-col items-center justify-between gap-2 rounded-3xl border-1 border-white/35 p-5 font-extrabold tracking-widest hover:bg-gray-500/20 md:h-50 md:flex-row`}
+          className={`group flex h-auto w-full cursor-pointer flex-col items-center justify-between gap-2 rounded-3xl border-1 border-white/35 p-5 font-extrabold tracking-widest hover:bg-gray-500/20 md:h-55 md:flex-row`}
         >
           <div className="flex flex-col">
             <h2

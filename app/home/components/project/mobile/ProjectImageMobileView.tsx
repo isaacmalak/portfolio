@@ -34,7 +34,7 @@ export function ProjectImageMobileView({ image }: { image: string }) {
       <button
         onClick={onClick}
         className={`pointer-events-auto relative z-10 max-h-45 shrink-0 origin-right cursor-pointer overflow-hidden transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${!isLoaded
-          ? "h-0 opacity-0"
+          ? "h-45 w-70 animate-pulse bg-gray-500/20"
           : aspectRatio && aspectRatio < 1
             ? "h-45 w-20"
             : "w-70"
