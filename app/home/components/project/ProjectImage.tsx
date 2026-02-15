@@ -24,19 +24,18 @@ export function ProjectImage({ image }: { image: string }) {
   const isLoaded = aspectRatio !== undefined && aspectRatio !== null;
   return (
     <>
-      <img src={image} style={{ display: "none" }} onLoad={handleLoad} />
+      {/* <img src={image} style={{ display: "none" }} onLoad={handleLoad} /> */}
 
       <ImageDialogue ref={dialogRef} image={image} aspectRatio={aspectRatio} />
 
       <button
         onClick={onClick}
-        className={`pointer-events-auto relative z-10 origin-right cursor-pointer overflow-hidden rounded-xl transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${
-          !isLoaded
-            ? "opacity-0"
-            : aspectRatio && aspectRatio < 1
-              ? "absolute -left-20 w-40"
-              : "w-70"
-        } `}
+        className={`pointer-events-auto relative z-10 origin-right cursor-pointer overflow-hidden rounded-xl transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${!isLoaded
+          ? "opacity-0"
+          : aspectRatio && aspectRatio < 1
+            ? "absolute -left-20 w-40"
+            : "w-70"
+          } `}
       >
         <Image
           src={image}
