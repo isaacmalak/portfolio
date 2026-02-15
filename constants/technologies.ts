@@ -48,4 +48,20 @@ export const technologies = [
     name: "Vapi",
     image: "/images/technologies/vapi.png",
   },
+  {
+    name: "Cloudinary",
+    image: "/images/technologies/cloudinary.webp",
+  },
+  {
+    name: "MongoDB",
+    image: "/images/technologies/mongodb.webp",
+  },
+  {
+    name: "Tailwind CSS",
+    image: "/images/technologies/tailwind.png",
+  },
+  {
+    name: "Gsap",
+    image: "/images/technologies/gsap.png",
+  },
 ];

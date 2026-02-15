@@ -31,10 +31,15 @@ export function ProjectDetails({
   const techList = technologies.filter((tech) =>
     selectedProject.techStackUsed?.includes(tech.name),
   );
+  const noImages = selectedProject.images.slice(1).length === 0;
   return media === "desktop" ? (
     <div className="no-scrollbar relative flex max-h-screen w-full flex-row gap-2 overflow-y-scroll px-2">
       {/* Description section */}
-      <section className="no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto px-2 py-12">
+      <section
+        className={`no-scrollbar flex min-h-[calc(100vh-90px)] w-3/4 flex-col items-start justify-start gap-5 overflow-y-auto px-2 py-12 ${
+          noImages && "w-full"
+        }`}
+      >
         <h1 className={`${selectedProject.titleColor} text-3xl`}>
           {selectedProject.title}
         </h1>
@@ -48,7 +53,10 @@ export function ProjectDetails({
         {selectedProject.detailedDescription && (
           <p className="text-lg text-white">
             {selectedProject.detailedDescription.map((text, index) => (
-              <span key={index} className={text.className?.toString()}>
+              <span
+                key={index}
+                className={`${text.className?.toString()} mb-3`}
+              >
                 {text.text}
               </span>
             ))}
@@ -87,15 +95,17 @@ export function ProjectDetails({
         )}
       </section>
       {/*  Images section */}
-      <section className="no-scrollbar absolute right-0 h-full max-h-[calc(100vh-50px)] w-1/4 overflow-y-scroll px-5 py-15">
-        <div className="sticky">
-          <div className="absolute right-0 flex flex-col items-end gap-3">
-            {selectedProject.images?.slice(1).map((image, index) => (
-              <ProjectImage key={index} image={image} />
-            ))}
+      {!noImages && (
+        <section className="no-scrollbar absolute right-0 h-full max-h-[calc(100vh-50px)] w-1/4 overflow-y-scroll px-5 py-15">
+          <div className="sticky">
+            <div className="absolute right-0 flex flex-col items-end gap-3">
+              {selectedProject.images?.slice(1).map((image, index) => (
+                <ProjectImage key={index} image={image} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   ) : (
     <ProjectDetailsMobileView project={selectedProject} techList={techList} />

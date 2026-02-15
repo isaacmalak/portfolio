@@ -15,6 +15,7 @@ export type Project = {
   titleColor: string;
   techStackUsed: string[];
 };
+
 const projectsPath = "/images/projects/";
 export const projects: Project[] = [
   {
@@ -39,6 +40,16 @@ export const projects: Project[] = [
       },
       {
         text: "Utilized modern web technologies to create an intuitive and responsive user interface.",
+        className: "block",
+      },
+      {
+        text: "Collaborated with",
+      },
+      {
+        text: " cross-functional",
+      },
+      {
+        text: " teams to ensure seamless integration with existing systems and optimize user experience.",
       },
     ],
     link: "https://alpha.mymedahealth.com",
@@ -75,6 +86,26 @@ export const projects: Project[] = [
         text: " tournament application, enabling users to manage teams, schedules, and real-time scores for their matches.",
       },
     ],
+    detailedDescription: [
+      {
+        text: "Developed using",
+        className: "block",
+      },
+      {
+        text: " Flutter",
+        className: "text-blue-700",
+      },
+      {
+        text: " and",
+      },
+      {
+        text: " Firebase",
+        className: "text-yellow-500",
+      },
+      {
+        text: ", the app provides a seamless experience for basketball enthusiasts to organize and track their tournaments.",
+      },
+    ],
     link: "https://apps.apple.com/us/app/coulda-been-league-app/id6745900309",
     images: [
       projectsPath + "cbl/logo.webp",
@@ -91,26 +122,89 @@ export const projects: Project[] = [
     title: "Dev Event Website - Event Booking App",
     description: [
       {
-        text: "Developed a full-stack event booking application for Dev Events, allowing users to browse, register, and manage event attendance seamlessly.",
+        text: "Developed a small web application for Dev Events, a platform that allows users to browse and register for various events.",
+        className: "block",
+      },
+    ],
+    detailedDescription: [
+      {
+        text: "The application features a user-friendly interface where users can easily navigate through different events, view event details, and register for their preferred events with just a few clicks.",
+        className: "block",
+      },
+      {
+        text: "Mainly focused on testing",
+      },
+      {
+        text: " MongoDB",
+        className: "text-green-700",
+      },
+      {
+        text: " and",
+      },
+      {
+        text: " Cloudinary",
+        className: "text-blue-700",
+      },
+      {
+        text: " for efficient data management and media handling, ensuring both platforms can work for a small application.",
       },
     ],
     link: "https://devevents-iota.vercel.app/",
-    images: [projectsPath + "event/logo.png"],
+    images: [
+      projectsPath + "event/logo.png",
+      projectsPath + "event/home.jpeg",
+      projectsPath + "event/event.jpeg",
+      projectsPath + "event/event2.jpeg",
+    ],
     titleOnHoverColor: "group-hover:text-green-700",
     titleColor: `text-green-700`,
-    techStackUsed: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    techStackUsed: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MongoDB",
+      "Cloudinary",
+    ],
   },
   {
     title: "Figures E-commerce - Action Figures Store",
     description: [
       {
-        text: "Built a demo e-commerce platform for Figures, specializing in action figures, with features for browsing products.",
+        text: "Built a demo e-commerce for Figures",
+      },
+      {
+        text: ", specializing in",
+      },
+      {
+        text: " action figures",
+        className: "text-red-700",
+      },
+      {
+        text: ", with features for browsing products.",
+      },
+    ],
+    detailedDescription: [
+      {
+        text: "A demo e-commerce built to showcase a potential client for expanding their online presence. The website features a clean and modern design, allowing users to easily browse through a curated selectqion of action figures.",
+        className: "block",
+      },
+      {
+        text: "Focusing on displaying a distinctive website using simple animations that highlights the unique products offered by there store, the demo serves as a proof of concept for a potential full-scale e-commerce platform.",
+        className: "block",
+      },
+      {
+        text: "NOTE: This project is a demo and does not include actual e-commerce functionalities such as payment processing or inventory management.",
+        className: "block italic text-gray-400 font-bold text-sm mt-7",
       },
     ],
     link: "https://ecommerce-demo-blue-mu.vercel.app/home",
-    images: [projectsPath + "ecommerce/logo.png"],
+    images: [
+      projectsPath + "ecommerce/logo.png",
+      projectsPath + "ecommerce/home.jpeg",
+      projectsPath + "ecommerce/product.jpeg",
+    ],
     titleOnHoverColor: "group-hover:text-red-700",
     titleColor: "text-red-700",
-    techStackUsed: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techStackUsed: ["Next.js", "TypeScript", "Tailwind CSS", "Gsap"],
   },
 ];
