@@ -17,7 +17,6 @@ export function ProjectCardImage({ imageSrc }: { imageSrc?: string }) {
         console.error("Error loading image:", imageSrc, e);
         setHasError(true);
       }}
-      unoptimized
       className="z-50 h-40 rounded-3xl border-0 border-transparent object-scale-down p-3"
     />
   );
