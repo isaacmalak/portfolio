@@ -143,7 +143,7 @@ export function ImageDialogue({
         }}
       >
         <div
-          className={`relative touch-none overflow-visible rounded-xl bg-gray-300/10 md:rounded-3xl md:transition-transform ${
+          className={`relative touch-none overflow-visible rounded-xl md:rounded-3xl md:transition-transform ${
             aspectRatio && aspectRatio < 1
               ? "h-[80vh] w-auto md:h-[90vh]"
               : "h-fit w-[90vw] md:h-[90vh] md:w-[90vw]"

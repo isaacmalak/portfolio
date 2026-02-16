@@ -9,7 +9,7 @@ type ImageLayout = { fill: true } | { height: number; width: number };
 type AnimatedImageProps = {
   src: string;
   alt: string;
-  className: ClassValue;
+  className?: ClassValue;
   onError?: ReactEventHandler<HTMLImageElement> | undefined;
   onLoad?: ReactEventHandler<HTMLImageElement> | undefined;
 } & ImageLayout;
