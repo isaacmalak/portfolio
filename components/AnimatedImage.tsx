@@ -1,0 +1,34 @@
+import { useGSAP } from "@gsap/react";
+import clsx, { ClassValue } from "clsx";
+import gsap from "gsap";
+import Image from "next/image";
+import { ReactEventHandler, useRef } from "react";
+
+type ImageLayout = { fill: true } | { height: number; width: number };
+
+type AnimatedImageProps = {
+  src: string;
+  alt: string;
+  className: ClassValue;
+  onError?: ReactEventHandler<HTMLImageElement> | undefined;
+  onLoad?: ReactEventHandler<HTMLImageElement> | undefined;
+} & ImageLayout;
+
+export function AnimatedImage(props: AnimatedImageProps) {
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  useGSAP(() => {
+    console.log("Animating image ya m3lm ...");
+    gsap.fromTo(
+      imageRef.current,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.in",
+      },
+    );
+  });
+  return <Image ref={imageRef} {...props} className={clsx(props.className)} />;
+}

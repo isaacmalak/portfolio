@@ -10,19 +10,20 @@ export default function Home() {
 
   return (
     <main className="flex min-h-[100dvh] max-w-screen flex-col items-center justify-center bg-black select-none">
-      {!isIntroFinished ? (
-        <ProfileIntro
-          onComplete={() => {
-            setInterFinished(true);
-          }}
-        />
-      ) : (
+      {
+        // !isIntroFinished ? (
+        //   <ProfileIntro
+        //     onComplete={() => {
+        //       setInterFinished(true);
+        //     }}
+        //   />
+        // ) :
         <>
           <ReactLenis root>
             <MainContent />
           </ReactLenis>
         </>
-      )}
+      }
     </main>
   );
 }
