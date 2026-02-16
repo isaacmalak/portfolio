@@ -1,5 +1,5 @@
+import { AnimatedImage } from "@/components/AnimatedImage";
 import { ImageDialogue } from "@/components/dialogues/ImageDialogue";
-import Image from "next/image";
 import { useRef, useState } from "react";
 
 export function ProjectImage({ image }: { image: string }) {
@@ -30,14 +30,15 @@ export function ProjectImage({ image }: { image: string }) {
 
       <button
         onClick={onClick}
-        className={`pointer-events-auto relative z-10 origin-right cursor-pointer overflow-hidden rounded-xl transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${!isLoaded
-            ? "h-40 w-70 animate-pulse bg-gray-500/20"
+        className={`pointer-events-auto relative z-10 origin-right cursor-pointer overflow-hidden rounded-xl transition-transform duration-400 hover:z-100 hover:scale-110 md:rounded-2xl ${
+          !isLoaded
+            ? "opacity-0"
             : aspectRatio && aspectRatio < 1
               ? "absolute -left-20 w-40"
               : "w-70"
-          } `}
+        } `}
       >
-        <Image
+        <AnimatedImage
           src={image}
           alt=""
           width={500}
