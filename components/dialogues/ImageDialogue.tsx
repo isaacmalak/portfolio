@@ -104,7 +104,7 @@ export function ImageDialogue({
     const observer = new MutationObserver(() => {
       if (closing) return;
       if (dialogRef.current?.open) {
-        // onOpen();
+        onLoad();
       }
     });
 
@@ -143,11 +143,10 @@ export function ImageDialogue({
         }}
       >
         <div
-          className={`relative touch-none overflow-visible rounded-xl md:rounded-3xl md:transition-transform ${
-            aspectRatio && aspectRatio < 1
-              ? "h-[80vh] w-auto md:h-[90vh]"
-              : "h-fit w-[90vw] md:h-[90vh] md:w-[90vw]"
-          }`}
+          className={`relative touch-none overflow-visible rounded-xl md:rounded-3xl md:transition-transform ${aspectRatio && aspectRatio < 1
+            ? "h-[80vh] w-auto md:h-[90vh]"
+            : "h-fit w-[90vw] md:h-[90vh] md:w-[90vw]"
+            }`}
           style={{ aspectRatio: aspectRatio }}
           ref={imageRef}
         >
@@ -162,7 +161,6 @@ export function ImageDialogue({
               }}
               fill
               alt=""
-              onLoad={onLoad}
               className="object-contain hover:cursor-grab md:duration-200"
             />
           }
