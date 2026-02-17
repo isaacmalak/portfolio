@@ -15,12 +15,14 @@ type AnimatedImageProps = {
   animateOnce?: boolean;
 } & ImageLayout;
 
-export function AnimatedImage(props: AnimatedImageProps) {
+export function AnimatedImage({ animateOnce, ...props }: AnimatedImageProps) {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const key = `$animated:${props.src}`;
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useGSAP(() => {
-    if (sessionStorage.getItem(key) === "true" && props.animateOnce) return;
+    if (sessionStorage.getItem(key) === "true" && animateOnce) return;
+    if (!isLoaded) return;
 
     console.log("Animating image:", props.src);
     gsap.fromTo(
@@ -37,13 +39,18 @@ export function AnimatedImage(props: AnimatedImageProps) {
         },
       },
     );
-  });
+  }, [isLoaded]);
+
   return (
     <Image
       ref={imageRef}
       {...props}
       className={clsx(props.className)}
       priority
+      onLoad={(e) => {
+        setIsLoaded(true);
+        if (props.onLoad) props.onLoad(e);
+      }}
     />
   );
 }
