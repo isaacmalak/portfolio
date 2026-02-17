@@ -4,7 +4,9 @@ import gsap from "gsap";
 import Image from "next/image";
 import { ReactEventHandler, useRef, useState } from "react";
 
-type ImageLayout = { fill: true } | { height: number; width: number };
+type ImageLayout =
+  | { fill: true; sizes: string | undefined }
+  | { height: number; width: number };
 
 type AnimatedImageProps = {
   src: string;
@@ -23,6 +25,7 @@ export function AnimatedImage({ animateOnce, ...props }: AnimatedImageProps) {
   useGSAP(() => {
     if (sessionStorage.getItem(key) === "true" && animateOnce) return;
     if (!isLoaded) return;
+    gsap.set(imageRef.current, { opacity: 0 });
 
     console.log("Animating image:", props.src);
     gsap.fromTo(
