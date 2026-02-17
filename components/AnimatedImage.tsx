@@ -12,6 +12,7 @@ type AnimatedImageProps = {
   className?: ClassValue;
   onError?: ReactEventHandler<HTMLImageElement> | undefined;
   onLoad?: ReactEventHandler<HTMLImageElement> | undefined;
+  animateOnce?: boolean;
 } & ImageLayout;
 
 export function AnimatedImage(props: AnimatedImageProps) {
@@ -19,7 +20,8 @@ export function AnimatedImage(props: AnimatedImageProps) {
   const key = `$animated:${props.src}`;
 
   useGSAP(() => {
-    if (sessionStorage.getItem(key) === "true") return;
+    if (sessionStorage.getItem(key) === "true" && !props.animateOnce) return;
+
     console.log("Animating image:", props.src);
     gsap.fromTo(
       imageRef.current,

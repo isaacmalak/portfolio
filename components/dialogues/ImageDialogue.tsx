@@ -88,8 +88,8 @@ export function ImageDialogue({
       },
     },
   );
-
-  const onOpen = () => {
+  //! That was onOpen
+  const onLoad = () => {
     gsap.fromTo(
       dialogRef.current,
       { opacity: 0 },
@@ -104,7 +104,7 @@ export function ImageDialogue({
     const observer = new MutationObserver(() => {
       if (closing) return;
       if (dialogRef.current?.open) {
-        onOpen();
+        // onOpen();
       }
     });
 
@@ -162,7 +162,7 @@ export function ImageDialogue({
               }}
               fill
               alt=""
-              quality={100}
+              onLoad={onLoad}
               className="object-contain hover:cursor-grab md:duration-200"
             />
           }
