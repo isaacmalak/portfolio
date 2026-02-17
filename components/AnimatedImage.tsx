@@ -20,7 +20,7 @@ export function AnimatedImage(props: AnimatedImageProps) {
   const key = `$animated:${props.src}`;
 
   useGSAP(() => {
-    if (sessionStorage.getItem(key) === "true" && !props.animateOnce) return;
+    if (sessionStorage.getItem(key) === "true" && props.animateOnce) return;
 
     console.log("Animating image:", props.src);
     gsap.fromTo(
