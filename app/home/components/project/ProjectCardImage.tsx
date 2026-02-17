@@ -2,8 +2,8 @@
 
 import { AnimatedImage } from "@/components/AnimatedImage";
 
-export function ProjectCardImage({ imageSrc }: { imageSrc?: string }) {
-  if (!imageSrc) return null;
+export function ProjectCardImage({ imageSrc }: { imageSrc: string }) {
+  // if (!imageSrc) return null;
 
   return (
     <div className="relative">
