@@ -1,12 +1,11 @@
 import { TechComponent } from "@/components/technologies/TechComponent";
 import { Project } from "@/constants/projects";
-import { technologies, Technology } from "@/constants/technologies";
-import Image from "next/image";
+import { technologies } from "@/constants/technologies";
 import Link from "next/link";
 import { ProjectImage } from "./ProjectImage";
 import { useEffect, useState } from "react";
 import { ProjectDetailsMobileView } from "./mobile/ProjectDetailsMobileView";
-import { roboto_mono } from "../Content";
+import { AnimatedImage } from "@/components/AnimatedImage";
 
 export function ProjectDetails({
   selectedProject,
@@ -25,7 +24,7 @@ export function ProjectDetails({
     setMatchMedia(matchList.matches ? "mobile" : "desktop");
     matchList.addEventListener("change", handleChange);
 
-    return () => matchList.addEventListener("change", handleChange);
+    return () => matchList.removeEventListener("change", handleChange);
   });
 
   const techList = technologies.filter((tech) =>
@@ -80,7 +79,7 @@ export function ProjectDetails({
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center rounded-3xl bg-white p-3"
             >
-              <Image
+              <AnimatedImage
                 src={selectedProject?.images[0]}
                 alt=""
                 width={100}

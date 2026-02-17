@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProjectImageMobileView } from "./ProjectImageMobileView";
 import { useEffect } from "react";
+import { AnimatedImage } from "@/components/AnimatedImage";
 
 export function ProjectDetailsMobileView({
   project,
@@ -53,7 +54,7 @@ export function ProjectDetailsMobileView({
             rel="noopener noreferrer"
             className="flex h-fit w-28 items-center justify-center rounded-xl bg-white p-3"
           >
-            <Image
+            <AnimatedImage
               src={project?.images[0]}
               alt=""
               width={120}

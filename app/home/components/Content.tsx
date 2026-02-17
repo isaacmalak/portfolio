@@ -1,6 +1,7 @@
 import { RefObject } from "react";
 import { Martian_Mono, VT323 } from "next/font/google";
 import Image from "next/image";
+import { AnimatedImage } from "@/components/AnimatedImage";
 
 export const roboto_mono = Martian_Mono({
   subsets: ["latin"],
@@ -49,7 +50,7 @@ export function Content({
           </p>
         </section>
         <section className="flex w-full flex-col items-center justify-center px-10 md:h-1/2 md:flex-1 md:px-0 md:pt-0">
-          <Image
+          <AnimatedImage
             src="/images/profile3.png"
             alt=""
             width={400}

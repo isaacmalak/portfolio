@@ -21,15 +21,15 @@ export function AnimatedImage({ animateOnce, ...props }: AnimatedImageProps) {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const key = `$animated:${props.src}`;
   const [isLoaded, setIsLoaded] = useState(false);
+  const isAnimated = sessionStorage.getItem(key) === "true"
 
   useGSAP(() => {
-    if (sessionStorage.getItem(key) === "true" && animateOnce) {
-      gsap.set(imageRef.current, { opacity: 0 });
+    if (isAnimated && animateOnce) {
+      gsap.set(imageRef.current, { opacity: 1 });
       return;
     }
     if (!isLoaded) return;
 
-    console.log("Animating image:", props.src);
     gsap.fromTo(
       imageRef.current,
       {
@@ -44,13 +44,14 @@ export function AnimatedImage({ animateOnce, ...props }: AnimatedImageProps) {
         },
       },
     );
-  }, [isLoaded]);
+  }, [isLoaded, isAnimated]);
 
   return (
     <Image
       ref={imageRef}
       {...props}
       className={clsx(props.className)}
+      style={{ opacity: 0 }}
       priority
       onLoad={(e) => {
         setIsLoaded(true);
