@@ -23,9 +23,11 @@ export function AnimatedImage({ animateOnce, ...props }: AnimatedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useGSAP(() => {
-    if (sessionStorage.getItem(key) === "true" && animateOnce) return;
+    if (sessionStorage.getItem(key) === "true" && animateOnce) {
+      gsap.set(imageRef.current, { opacity: 0 });
+      return;
+    }
     if (!isLoaded) return;
-    gsap.set(imageRef.current, { opacity: 0 });
 
     console.log("Animating image:", props.src);
     gsap.fromTo(
