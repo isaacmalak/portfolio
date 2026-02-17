@@ -28,7 +28,7 @@ export function AnimatedImage(props: AnimatedImageProps) {
       },
       {
         opacity: 1,
-        duration: 0.8,
+        duration: 0.6,
         ease: "power3.in",
         onComplete: () => {
           sessionStorage.setItem(key, "true");

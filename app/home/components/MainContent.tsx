@@ -83,11 +83,11 @@ export function MainContent() {
               value: "Just kidding, check out my projects!",
               newClass: "text-gray-300",
             },
-            duration: 1,
+            duration: 2.5,
           })
           .to(enoughTextRef.current, {
             duration: 1,
-            delay: 1.5,
+            delay: 0.8,
             ease: "power3.out",
             opacity: 0,
           }),
