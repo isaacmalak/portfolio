@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const socialImageUrl =
-  "https://portfolio-navy-tau-c3v4iquzvh.vercel.app/images/profile_colored.jpg";
-
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-navy-tau-c3v4iquzvh.vercel.app"),
   title: "Isaac Malak",
   description: "Created with coffee",
   openGraph: {
     title: "Isaac Malak",
     description: "Created with coffee",
     images: [
-      // image that will appear on social media when sharing the website link
       {
-        url: socialImageUrl,
+        url: "/images/profile_colored.jpg",
         width: 1200,
         height: 630,
         alt: "Isaac Malak",
       },
     ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Isaac Malak",
+    description: "Created with coffee",
+    images: ["/images/profile_colored.jpg"],
   },
 };
 
