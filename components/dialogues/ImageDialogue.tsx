@@ -161,6 +161,7 @@ export function ImageDialogue({
               }}
               fill
               alt=""
+              priority
               className="object-contain hover:cursor-grab md:duration-200"
             />
           }
