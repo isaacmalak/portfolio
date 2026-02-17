@@ -36,5 +36,12 @@ export function AnimatedImage(props: AnimatedImageProps) {
       },
     );
   });
-  return <Image ref={imageRef} {...props} className={clsx(props.className)} />;
+  return (
+    <Image
+      ref={imageRef}
+      {...props}
+      className={clsx(props.className)}
+      priority
+    />
+  );
 }
