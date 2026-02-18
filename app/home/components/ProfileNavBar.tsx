@@ -1,15 +1,39 @@
-import { GithubIcon, LucideLinkedin } from "lucide-react";
+"use client";
+import { GithubIcon, LucideLinkedin, MailIcon } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function ProfileNavBar() {
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    fetch("/api/myEmail", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEmail(data.email);
+      })
+      .catch(console.error);
+  }, []);
   return (
-    <nav className="flex flex-row w-full justify-end py-3 px-5 text-white bg-transparent backdrop-blur-xs items-center absolute z-100">
+    <nav className="absolute z-100 flex w-full flex-row items-center justify-end bg-transparent px-5 py-3 text-white backdrop-blur-xs">
       <div className="flex gap-5">
         <Link href={"https://www.linkedin.com/in/isaacmalak/"} target="_blank">
           <LucideLinkedin />
         </Link>
         <Link href={"https://github.com/isaacmalak"} target="_blank">
           <GithubIcon />
+        </Link>
+
+        <Link
+          href="#"
+          onClick={async (e) => {
+            if (email) window.location.href = `mailto:${email}`;
+          }}
+          aria-label="Email"
+          className="transition-colors hover:text-blue-400"
+        >
+          <MailIcon />
         </Link>
       </div>
     </nav>
