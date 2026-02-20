@@ -28,7 +28,8 @@ export function ProfileNavBar() {
         <Link
           href="#"
           onClick={async (e) => {
-            if (email) window.location.href = `mailto:${email}`;
+            e.preventDefault();
+            if (email) window.open(`mailto:${email}`, "_blank");
           }}
           aria-label="Email"
           className="transition-colors hover:text-blue-400"
